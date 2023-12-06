@@ -6,17 +6,34 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:21:10 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/05 16:11:04 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/06 09:27:40 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
-int	ft_valid_texture(char **map)
+int	ft_valid_map(char **file, t_cube *cube)
 {
 }
 
-int	valid_insidefile(char *av)
+int	ft_valid_texture(char **file, t_cube *cube)
+{
+	int	i;
+
+	i = 0;
+	while (file[i])
+	{
+		if (ft_strncmp(file[i], "NO", 2) == 0)
+		{
+			cube->texture->nord = mlx_xpm_file_to_image(cube->mlx, file[i] + 3,
+					&cube->texture->nord->width, &cube->texture->nord->height);
+			if (cube->texture->nord == NULL)
+				return (ft_error("texture nord is not correct",1));
+		}
+	}
+}
+
+int	valid_insidefile(char *av, t_cube *cube)
 {
 	int		fd;
 	char	*line;
@@ -37,7 +54,7 @@ int	valid_insidefile(char *av)
 		else
 			file[i++] = line;
 		close(fd);
-		if (ft_valid_texture(file) != 0 || ft_valid_map(file) != 0)
+		if (ft_valid_texture(file, cube) != 0 || ft_valid_map(file, cube) != 0)
 			return (ft_free_tab(file, 1));
 		return (ft_free_tab(file, 0));
 	}
@@ -68,7 +85,7 @@ int	ft_valid_file(char *av)
 	return (0);
 }
 
-int	ft_valid_arg(ac, av);
+int	ft_valid_arg(int ac, char **av, t_cube *cube);
 {
 	int err;
 
@@ -79,7 +96,6 @@ int	ft_valid_arg(ac, av);
 		err += ft_valid_insidefile(av[1]);
 	else
 		err += 1;
-
 	if (err != 0)
 		return (1);
 }
