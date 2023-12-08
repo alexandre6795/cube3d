@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_size.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 16:21:53 by sbouheni          #+#    #+#             */
-/*   Updated: 2023/12/08 11:51:02 by aherrman         ###   ########.fr       */
+/*   Created: 2023/12/08 10:05:05 by aherrman          #+#    #+#             */
+/*   Updated: 2023/12/08 10:06:23 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+int	ft_size(int fd)
 {
-	size_t	i;
-	size_t	j;
+	int i;
+	char *s;
+	int t;
 
-	if (set && s1)
+	t = fd;
+	i = 0;
+	while (1)
 	{
-		i = 0;
-		while (s1[i] && ft_strchr(set, s1[i]))
+		s = get_next_line(t);
+		if (s == NULL)
+			break ;
+		else
 			i++;
-		j = ft_strlen(s1);
-		while (j && ft_strrchr(set, s1[j]))
-			j--;
-		j = (j - i) + 1;
-		free(s1);
-		return (ft_substr(s1, i, j));
+		free(s);
 	}
-	return (NULL);
+	close(t);
+	return (i);
 }

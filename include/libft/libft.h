@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:08:51 by sbouheni          #+#    #+#             */
-/*   Updated: 2023/12/05 16:10:33 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:51:02 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ char				**ft_split_white_space(char const *s);
 char				*p_free_strjoin(char *s1, char *s2);
 void				p_free_splited_str(char **splited_str);
 //				for tab
-int				ft_free_tab(char **tab,int r);
+int					ft_free_tab(char **tab, int r);
+int					ft_tablen(char **tab);
+// ft_size.c
+int					ft_size(int fd);
 
 #endif

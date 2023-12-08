@@ -6,14 +6,14 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/06 09:20:10 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:51:02 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
-# include ".mlx42/include/MLX42/MLX42.h"
+# include ".MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
 # include <fcntl.h>
 # include <math.h>
@@ -31,6 +31,7 @@ typedef struct s_startpos
 
 typedef struct s_image
 {
+	char **path;
 	mlx_image_t	*nord;
 	mlx_image_t	*south;
 	mlx_image_t	*est;
@@ -62,4 +63,11 @@ typedef struct s_cube
 
 }				t_cube;
 
+/*function declaration*/
+//ft_error.c//
+int	ft_error(char *str);
+//ft_free.c//
+void ft_free_all(t_cube *cube);
+//valid_arg.c//
+int	ft_valid_arg(int ac, char **av, t_cube *cube);
 #endif
