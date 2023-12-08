@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/08 11:51:02 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:08:39 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_startpos
 
 typedef struct s_image
 {
-	char **path;
+	char		**path;
 	mlx_image_t	*nord;
 	mlx_image_t	*south;
 	mlx_image_t	*est;
@@ -39,6 +39,19 @@ typedef struct s_image
 	mlx_image_t	*floor;
 	mlx_image_t	*sky;
 }				t_image;
+
+typedef struct s_tmp
+{
+	int			i;
+	int			j;
+	int			k;
+	int			l;
+	float		w;
+	float		x;
+	float		y;
+	float		z;
+
+}				t_tmp;
 
 typedef struct s_player
 {
@@ -64,10 +77,16 @@ typedef struct s_cube
 }				t_cube;
 
 /*function declaration*/
-//ft_error.c//
-int	ft_error(char *str);
-//ft_free.c//
-void ft_free_all(t_cube *cube);
-//valid_arg.c//
-int	ft_valid_arg(int ac, char **av, t_cube *cube);
+// ft_error.c//
+int				ft_error(char *str);
+// ft_free.c//
+void			ft_free_all(t_cube *cube);
+// valid_arg.c//
+int				ft_valid_arg(int ac, char **av, t_cube *cube);
+// utils.c//
+t_tmp			init_temp(void);
+// map.c//
+int				start_map(char **file, int len);
+int				stop_map(char **file, int len);
+int				valid_perso(char **file, int start);
 #endif

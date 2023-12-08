@@ -6,24 +6,40 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:21:10 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/08 11:34:32 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:20:46 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
-int	ft_valid_map(char **file, t_cube *cube,int len)
+int	ft_valid_map(char **file, t_cube *cube, int len)
 {
-	int	i;
+	t_tmp	tmp;
 
-	i = 0;
-	while (file[i])
+	tmp = init_temp();
+	tmp.j = start_map(file, len);
+	tmp.k = end_map(file, len);
+	tmp.i = tmp.j;
+	while (file[tmp.i])
 	{
-		file[i] = ft_strtrim(file[i], " ");
-		if(i == 0)
+		file[tmp.i] = ft_strtrim(file[tmp.i], " ");
+		if (tmp.i == tmp.j || tmp.i == tmp.k)
+		{
+			if (file[tmp.i][0] != '1' && file[tmp.i][0] != ' ')
+				return (ft_error("map not close"));
+		}
+		else
+		{
+			if (file[tmp.i][0] != '1' && file[tmp.i][ft_strlen(file[tmp.i])
+				- 1] != '1')
+				return (ft_error("map not close"));
+		}
+		tmp.i++;
 	}
+	if (valid_perso(file, tmp.j) != 0)
+		return (ft_error("map don't have initial position for user"));
+	return (0);
 }
-
 int	ft_valid_texture(char **file, t_cube *cube)
 {
 	int	i;
@@ -34,21 +50,13 @@ int	ft_valid_texture(char **file, t_cube *cube)
 	while (file[i])
 	{
 		file[i] = ft_strtrim(file[i], " ");
-		if (ft_strncmp(file[i], "NO", 2) == 0)
-			cube->texture->path[count++] = ft_strdup(file[i] + 2);
-		else if (ft_strncmp(file[i], "SO", 2) == 0)
-			cube->texture->path[count++] = ft_strdup(file[i] + 2);
-		else if (ft_strncmp(file[i], "WE", 2) == 0)
-			cube->texture->path[count++] = ft_strdup(file[i] + 2);
-		else if (ft_strncmp(file[i], "EA", 2) == 0)
-			cube->texture->path[count++] = ft_strdup(file[i] + 2);
-		else if (ft_strncmp(file[i], "C", 1) == 0)
-			cube->texture->path[count++] = ft_strdup(file[i] + 1);
-		else if (ft_strncmp(file[i], "F", 1) == 0)
-			cube->texture->path[count++] = ft_strdup(file[i] + 1);
+		if (count >= 6 && ft_valid_tex(file[i]) != 0)
+			return (ft_error("too many texture"));
+		else
+			cube->texture->path[count++] = ft_strdup(file[i]);
 		i++;
 	}
-	if (count != 6)
+	if (count > 6)
 		return (ft_error("texture missing"));
 	return (0);
 }
