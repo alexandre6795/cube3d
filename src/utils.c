@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:54:28 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 11:44:16 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:45:25 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,27 @@ void cube_strtrim(char **tab)
 	int i;
 	int j;
 	int supress[2];
+	char *tmp;
 
-	i = 0;
+	i = -1;
 	j = 0;
-	while(tab[i])
+	while(tab[++i])
 	{
+		if (ft_strlen(tab[i]) == 0)
+		{
+			continue;
+		}
 		j = 0; //de 9 a 13 et 32
 		while(tab[i][j] && (tab[i][j] == ' ' || (tab[i][j] >= 9 && tab[i][j] <= 13)))
 			j++;
-		j = ft_strlen(tab[i]);
-		while(tab[i][j] && (tab[i][j] == ' ' || (tab[i][j] >= 9 && tab[i][j] <= 13)))
+		supress[0] = j;
+		j = ft_strlen(tab[i]) - 1;
+		while(j >= 0 && tab[i][j] && (tab[i][j] == ' ' || (tab[i][j] >= 9 && tab[i][j] <= 13)))
 			j--;
-		i++;
+		supress[1] = j;
+		tmp = tab[i];
+		tab[i] = ft_substr(tab[i], supress[0], supress[1] - supress[0] + 1);
+		free(tmp);
 	}
 	
 }

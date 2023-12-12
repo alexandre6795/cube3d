@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:21:10 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 11:35:01 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:52:39 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,17 @@ int	ft_valid_texture(char **file, t_cube *cube)
 	printf("coucou texute\n");
 	i = 0;
 	count = 0;
-	cube_strtrim(file, " ");
+	cube_strtrim(file);
+	print_tab(file);
 	while (file[i])
 	{
 		if (count >= 6 && valid_tex(file[i]) != 0)
 			return (ft_error("too many texture"));
-		else
+		else if (count < 6 && valid_tex(file[i]) == 0)
 			cube->texture->path[count++] = ft_strdup(file[i]);
 		i++;
 	}
+	(void)cube;
 	if (count < 6)
 		return (ft_error("error on texture"));
 	return (0);
@@ -79,11 +81,10 @@ int	valid_insidefile(char *av, t_cube *cube)
 		else
 			file[i++] = line;
 	}
-	print_tab(file);
 	close(fd);
-	if (ft_valid_texture(file, cube) != 0 /*|| ft_valid_map(file,
+	if (ft_valid_texture(file, cube) != 0 || ft_valid_map(file,
 			ft_tablen(file),
-			cube) != 0*/)
+			cube) != 0)
 		return (ft_free_tab(file, 1));
 	return (ft_free_tab(file, 0));
 }

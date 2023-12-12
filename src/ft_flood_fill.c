@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flood_fill.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:21:29 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 10:53:15 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:47:58 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	ft_flood_fill(t_cube *cube)
 	copy = copy_tab(cube->map->map);
 	cur = *cube->start;
 	fill(copy, cur);
+	print_tab(copy);
 	// ft_valid_road(copy, cube);
 	ft_free_tab(copy,0);
 }
