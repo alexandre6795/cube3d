@@ -6,13 +6,13 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 09:17:21 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/08 11:51:02 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:11:27 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
-void free_all_mlx(t_cube *cube)
+void	free_all_mlx(t_cube *cube)
 {
 	if (cube->texture->nord != NULL)
 		mlx_delete_image(cube->mlx, cube->texture->nord);
@@ -30,13 +30,15 @@ void free_all_mlx(t_cube *cube)
 		mlx_terminate(cube->mlx);
 }
 
-void free_all_char(t_cube *cube)
+void	free_all_char(t_cube *cube)
 {
 	if (cube->map->map != NULL)
-		ft_free_tab(cube->map->map,0);
+		ft_free_tab(cube->map->map, 0);
+	if (cube->texture->path != NULL)
+		ft_free_tab(cube->texture->path, 0);
 }
 
-void ft_free_all(t_cube *cube)
+void	ft_free_all(t_cube *cube)
 {
 	free_all_mlx(cube);
 	free_all_char(cube);

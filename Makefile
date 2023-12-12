@@ -6,7 +6,7 @@
 #    By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 10:04:23 by aherrman          #+#    #+#              #
-#    Updated: 2023/12/12 09:07:39 by aherrman         ###   ########.fr        #
+#    Updated: 2023/12/12 10:45:49 by aherrman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ ft_free.c\
 valid_arg.c\
 map.c\
 utils.c\
+ft_flood_fill.c\
 test.c
 
 SRCSB = 

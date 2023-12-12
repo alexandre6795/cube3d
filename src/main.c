@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 09:17:13 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:30:04 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 // }
 void	init_for_mlx(t_cube *cube)
 {
-	cube->texture->path = malloc(sizeof(char *) * 7);
+	cube->texture->path = ft_calloc(7, sizeof(char *));
 	cube->texture->path[6] = NULL;
 	cube->texture->nord = NULL;
 	cube->texture->south = NULL;
@@ -46,6 +46,7 @@ void	init_for_mlx(t_cube *cube)
 	cube->texture->west = NULL;
 	cube->texture->floor = NULL;
 	cube->texture->sky = NULL;
+	cube->mlx = NULL;
 }
 
 void	init_cube(t_cube *cube)
@@ -60,6 +61,7 @@ void	init_cube(t_cube *cube)
 	cube->texture = malloc(sizeof(t_image));
 	init_for_mlx(cube);
 	cube->map = malloc(sizeof(t_map));
+	cube->map->map = NULL;
 }
 
 int	main(int ac, char **av)
@@ -69,7 +71,7 @@ int	main(int ac, char **av)
 	cube = malloc(sizeof(t_cube));
 	init_cube(cube);
 	ft_valid_arg(ac, av, cube);
-	print_map(cube);
+	// print_map(cube);
 	// cube->mlx = mlx_init(32 * cube->map->size_y, 32 * cube->map->size_y,
 	// 		"MLX42", true);
 	// if (!(cube->mlx))

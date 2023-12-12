@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:59:08 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 10:01:02 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:20:29 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	copy_map(char **file, int start, t_cube *cube)
 
 	i = start;
 	j = 0;
+	cube->map->map = ft_calloc(ft_tablen(file) + 1, sizeof(char *));
 	while (file[i])
 	{
 		cube->map->map[j] = ft_strdup(file[i]);
@@ -54,15 +55,21 @@ void	copy_map(char **file, int start, t_cube *cube)
 		j++;
 	}
 }
+void	need_line(char c, int i, int j, t_cube *cube)
+{
+	cube->start->sens = c;
+	cube->start->x = i;
+	cube->start->y = j;
+}
 int	valid_perso(char **file, int start, t_cube *cube)
 {
 	int	i;
 	int	j;
 	int	count;
 
+	count = 0;
 	i = start - 1;
 	j = -1;
-	count = 0;
 	while (file[++i])
 	{
 		j = -1;
@@ -72,12 +79,11 @@ int	valid_perso(char **file, int start, t_cube *cube)
 				|| file[i][j] == 'W')
 			{
 				count++;
-				cube->player->x = i;
-				cube->player->y = j;
+				need_line(file[i][j], i, j, cube);
 			}
 		}
 	}
-	if (count != 1)
+	if (count == true)
 		return (1);
 	copy_map(file, start, cube);
 	return (0);
