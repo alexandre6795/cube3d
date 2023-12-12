@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 09:34:15 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 09:44:31 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,7 @@ int				ft_valid_arg(int ac, char **av, t_cube *cube);
 // utils.c//
 t_tmp			init_temp(void);
 // map.c//
-int				start_map(char **file, int len);
-int				end_map(char **file, int len);
+int				start_map(char **file, int len, bool j);
 int				valid_perso(char **file, int start, t_cube *cube);
 int				valid_tex(char *file);
 

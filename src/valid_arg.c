@@ -6,44 +6,40 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:21:10 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 09:39:55 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 09:57:42 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
-int	ft_valid_map(char **file, int len,t_cube *cube)
+int	ft_valid_map(char **file, int len, t_cube *cube)
 {
 	t_tmp	tmp;
-printf("coucou valid map\n");
+
+	printf("coucou valid map\n");
 	tmp = init_temp();
-	tmp.j = start_map(file, len);
-	tmp.k = end_map(file, len);
+	tmp.j = start_map(file, len, true);
+	tmp.k = start_map(file, len, false);
 	tmp.i = tmp.j;
+	if (valid_first_and_last_line(file[tmp.i], file[tmp.k]) != 0)
+		return (ft_error("map not close"));
+	if (valid_perso(file, tmp.j, cube) != 0)
+		return (ft_error("map don't have initial position for user"));
 	while (file[tmp.i])
 	{
-		if (tmp.i == tmp.j || tmp.i == tmp.k)
-		{
-			if (file[tmp.i][0] != '1' && file[tmp.i][0] != ' ')
-				return (ft_error("map not close"));
-		}
-		else
-		{
-			if (file[tmp.i][0] != '1' && file[tmp.i][ft_strlen(file[tmp.i])
-				- 1] != '1')
-				return (ft_error("map not close"));
-		}
+		if (file[tmp.i][0] != '1' && file[tmp.i][ft_strlen(file[tmp.i])
+			- 1] != '1')
+			return (ft_error("map not close"));
 		tmp.i++;
 	}
-	if (valid_perso(file, tmp.j,cube) != 0)
-		return (ft_error("map don't have initial position for user"));
 	return (0);
 }
 int	ft_valid_texture(char **file, t_cube *cube)
 {
 	int	i;
 	int	count;
-printf("coucou texute\n");
+
+	printf("coucou texute\n");
 	i = 0;
 	count = 0;
 	while (file[i])
@@ -67,7 +63,7 @@ int	valid_insidefile(char *av, t_cube *cube)
 	int		i;
 	char	**file;
 
-printf("coucou insidefile\n");
+	printf("coucou insidefile\n");
 	i = 0;
 	fd = open(av, O_RDONLY);
 	file = malloc(sizeof(char *) * ft_size(open(av, O_RDONLY)));
@@ -83,8 +79,8 @@ printf("coucou insidefile\n");
 			file[i++] = line;
 	}
 	close(fd);
-	if (ft_valid_texture(file, cube) != 0 || ft_valid_map(file,
-			ft_tablen(file),cube) != 0)
+	if (ft_valid_texture(file, cube) != 0 || ft_valid_map(file, ft_tablen(file),
+			cube) != 0)
 		return (ft_free_tab(file, 1));
 	return (ft_free_tab(file, 0));
 }
@@ -119,7 +115,7 @@ int	ft_valid_arg(int ac, char **av, t_cube *cube)
 	if (ac != 2)
 		return (ft_error("Invalid number of arguments"));
 	if (ft_valid_file(av[1]) == 0)
-		return (valid_insidefile(av[1],cube));
+		return (valid_insidefile(av[1], cube));
 	else
 		return (1);
 }

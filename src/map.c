@@ -6,38 +6,37 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:59:08 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 09:32:10 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:01:02 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
-int	start_map(char **file, int len)
+int	start_map(char **file, int len, bool j)
 {
 	int	i;
 
-	i = 0;
-	while (i < len)
+	if (j == true)
 	{
-		file[i] = ft_strtrim(file[i], " ");
-		if (ft_strncmp(file[i], "1", 1) == 0)
-			return (i);
-		i++;
+		i = 0;
+		while (i < len)
+		{
+			file[i] = ft_strtrim(file[i], " ");
+			if (ft_strncmp(file[i], "1", 1) == 0)
+				return (i);
+			i++;
+		}
 	}
-	return (0);
-}
-
-int	end_map(char **file, int len)
-{
-	int	i;
-
-	i = len - 1;
-	while (i > 0)
+	else
 	{
-		file[i] = ft_strtrim(file[i], " ");
-		if (ft_strncmp(file[i], "1", 1) == 0)
-			return (i);
-		i--;
+		i = len - 1;
+		while (i > 0)
+		{
+			file[i] = ft_strtrim(file[i], " ");
+			if (ft_strncmp(file[i], "1", 1) == 0)
+				return (i);
+			i--;
+		}
 	}
 	return (0);
 }
@@ -61,19 +60,22 @@ int	valid_perso(char **file, int start, t_cube *cube)
 	int	j;
 	int	count;
 
-	i = start;
-	j = 0;
+	i = start - 1;
+	j = -1;
 	count = 0;
-	while (file[i])
+	while (file[++i])
 	{
-		while (file[i][j])
+		j = -1;
+		while (file[i][++j])
 		{
 			if (file[i][j] == 'N' || file[i][j] == 'S' || file[i][j] == 'E'
 				|| file[i][j] == 'W')
+			{
 				count++;
-			j++;
+				cube->player->x = i;
+				cube->player->y = j;
+			}
 		}
-		i++;
 	}
 	if (count != 1)
 		return (1);
