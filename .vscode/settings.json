@@ -59,5 +59,12 @@
   "files.associations": {
     "libft.h": "c",
     "mlx42.h": "c"
-  }
+  },
+  "makefile.launchConfigurations": [
+    {
+      "cwd": "/local-home/aherrman/Documents/cube3d",
+      "binaryPath": "/local-home/aherrman/Documents/cube3d/cub3D",
+      "binaryArgs": []
+    }
+  ]
 }

@@ -6,7 +6,7 @@
 #    By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 10:04:23 by aherrman          #+#    #+#              #
-#    Updated: 2023/12/08 13:59:26 by aherrman         ###   ########.fr        #
+#    Updated: 2023/12/12 09:07:39 by aherrman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ ft_error.c\
 ft_free.c\
 valid_arg.c\
 map.c\
-utils.c
+utils.c\
+test.c
 
 SRCSB = 
 

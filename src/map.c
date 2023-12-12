@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:59:08 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/08 15:20:00 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 09:32:10 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	start_map(char **file, int len)
 	return (0);
 }
 
-int	stop_map(char **file, int len)
+int	end_map(char **file, int len)
 {
 	int	i;
 
@@ -41,7 +41,21 @@ int	stop_map(char **file, int len)
 	}
 	return (0);
 }
-int	valid_perso(char **file, int start)
+void	copy_map(char **file, int start, t_cube *cube)
+{
+	int	i;
+	int	j;
+
+	i = start;
+	j = 0;
+	while (file[i])
+	{
+		cube->map->map[j] = ft_strdup(file[i]);
+		i++;
+		j++;
+	}
+}
+int	valid_perso(char **file, int start, t_cube *cube)
 {
 	int	i;
 	int	j;
@@ -63,17 +77,15 @@ int	valid_perso(char **file, int start)
 	}
 	if (count != 1)
 		return (1);
+	copy_map(file, start, cube);
 	return (0);
 }
 
 int	valid_tex(char *file)
 {
-	int	i;
-
-	i = 0;
 	if (ft_strncmp(file, "NO", 2) == 0 || ft_strncmp(file, "SO", 2) == 0
 		|| ft_strncmp(file, "WE", 2) == 0 || ft_strncmp(file, "EA", 2) == 0
 		|| ft_strncmp(file, "C", 1) == 0 || ft_strncmp(file, "F", 1) == 0)
 		return (1);
-	reutrn(0);
+	return (0);
 }

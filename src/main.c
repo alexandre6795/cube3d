@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/08 11:51:02 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 09:17:13 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	main(int ac, char **av)
 	cube = malloc(sizeof(t_cube));
 	init_cube(cube);
 	ft_valid_arg(ac, av, cube);
+	print_map(cube);
 	// cube->mlx = mlx_init(32 * cube->map->size_y, 32 * cube->map->size_y,
 	// 		"MLX42", true);
 	// if (!(cube->mlx))
