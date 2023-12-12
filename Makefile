@@ -6,7 +6,7 @@
 #    By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 10:04:23 by aherrman          #+#    #+#              #
-#    Updated: 2023/12/12 10:45:49 by aherrman         ###   ########.fr        #
+#    Updated: 2023/12/12 13:46:10 by aherrman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ clean:
 fclean:	clean
 	$(RM) $(NAME)
 	make fclean -C ./include/libft
+	rm -rf ./include/.MLX42/build
 #	make clean -C /Users/aherrman/goinfre/.MLX42/build
 	
 re:	fclean all

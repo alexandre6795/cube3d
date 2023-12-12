@@ -6,40 +6,12 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:59:08 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 11:20:29 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:25:44 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
-int	start_map(char **file, int len, bool j)
-{
-	int	i;
-
-	if (j == true)
-	{
-		i = 0;
-		while (i < len)
-		{
-			file[i] = ft_strtrim(file[i], " ");
-			if (ft_strncmp(file[i], "1", 1) == 0)
-				return (i);
-			i++;
-		}
-	}
-	else
-	{
-		i = len - 1;
-		while (i > 0)
-		{
-			file[i] = ft_strtrim(file[i], " ");
-			if (ft_strncmp(file[i], "1", 1) == 0)
-				return (i);
-			i--;
-		}
-	}
-	return (0);
-}
 void	copy_map(char **file, int start, t_cube *cube)
 {
 	int	i;
@@ -58,9 +30,33 @@ void	copy_map(char **file, int start, t_cube *cube)
 void	need_line(char c, int i, int j, t_cube *cube)
 {
 	cube->start->sens = c;
-	cube->start->x = i;
+	cube->start->x = i - cube->map->startline;
 	cube->start->y = j;
 }
+
+int	invalid_char(char **file, int start)
+{
+	int	i;
+	int	j;
+
+	i = start;
+	j = 0;
+	while (file[i])
+	{
+		j = 0;
+		while (file[i][j])
+		{
+			if (file[i][j] != '1' && file[i][j] != 'D' && file[i][j] != '0'
+				&& file[i][j] != 'N' && file[i][j] != 'S' && file[i][j] != 'E'
+				&& file[i][j] != 'W' && file[i][j] != ' ')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	valid_perso(char **file, int start, t_cube *cube)
 {
 	int	i;
@@ -83,7 +79,7 @@ int	valid_perso(char **file, int start, t_cube *cube)
 			}
 		}
 	}
-	if (count == true)
+	if (count != 1)
 		return (1);
 	copy_map(file, start, cube);
 	return (0);

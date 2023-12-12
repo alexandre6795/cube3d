@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 12:13:36 by akastler         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:15:13 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_map
 {
 	int			size_x;
 	int			size_y;
+	int			startline;
 	char		**map;
 }				t_map;
 
@@ -87,10 +88,11 @@ int				ft_valid_arg(int ac, char **av, t_cube *cube);
 // utils.c//
 t_tmp			init_temp(void);
 void			cube_strtrim(char **tab);
+void			cube_trim_nl(char **tab);
 // map.c//
-int				start_map(char **file, int len, bool j);
 int				valid_perso(char **file, int start, t_cube *cube);
 int				valid_tex(char *file);
+int				invalid_char(char **file, int start);
 // ft_flood_fill.c//
 void			ft_flood_fill(t_cube *cube);
 

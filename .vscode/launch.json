@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/local-home/aherrman/Documents/cube3d/src",
-      "program": "/local-home/aherrman/Documents/cube3d/src/build/Debug/outDebug",
+      "cwd": "/local-home/aherrman/Documents/cube3d/include/libft",
+      "program": "/local-home/aherrman/Documents/cube3d/include/libft/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
