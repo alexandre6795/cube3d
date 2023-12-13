@@ -6,18 +6,18 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:54:28 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 14:26:21 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/13 09:30:06 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
-void cube_trim_nl(char **tab)
+void	cube_trim_nl(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(tab[i])
+	while (tab[i])
 	{
 		if (tab[i][ft_strlen(tab[i]) - 1] == '\n')
 			tab[i][ft_strlen(tab[i]) - 1] = '\0';
