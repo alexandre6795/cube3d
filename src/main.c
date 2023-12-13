@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 14:47:19 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:40:53 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,21 @@ void	init_cube(t_cube *cube)
 int	main(int ac, char **av)
 {
 	t_cube *cube;
+	int ret;
 
+	ret = 0;
 	cube = malloc(sizeof(t_cube));
 	init_cube(cube);
-	ft_valid_arg(ac, av, cube);
-	// print_map(cube);
-	// cube->mlx = mlx_init(32 * cube->map->size_y, 32 * cube->map->size_y,
-	// 		"MLX42", true);
-	// if (!(cube->mlx))
-	// 	ft_error("can t open game sorry :/);
+	ret = ft_valid_arg(ac, av, cube);
+	if (ret == 0)
+	{
+		ft_printf("map:\n");
+		print_map(cube);
+		open_textures(cube);
+		// cube->mlx = mlx_init(32 * cube->map->size_y, 32 * cube->map->size_y,
+		// 		"MLX42", true);
+		// if (!(cube->mlx))
+		// 	ft_error("can t open game sorry :/);
+	}
 	ft_free_all(cube);
 }

@@ -1,5 +1,5 @@
-                    NO ./path_to_the_north_texture                          
-            SO ./path_to_the_south_texture  
+                    NO ./img/c1.png
+            SO ./img/floor1.png  
 
 
 
@@ -11,8 +11,8 @@
 
 
 
-                                    WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture                                         
+                                    WE ./img/p1.png
+EA ./img/Waffles.png                                         
 
 
 
@@ -25,7 +25,7 @@ C 225,30,0
 
 
 111111
-100001  1
+1000010 1
 1000011101                      1
 1111111 1                      101
                                 1

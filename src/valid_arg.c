@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:21:10 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 15:19:20 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:42:48 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	ft_valid_map(char **file, t_cube *cube)
 		return (ft_error("invalid char in map"));
 	if (valid_perso(file, cube->map->startline, cube) != 0)
 		return (ft_error("map don't have initial position for user"));
-	ft_flood_fill(cube);
+	if (ft_flood_fill(cube) != 0)
+		return (ft_error("map not closed"));
 	return (0);
 }
 int	ft_valid_texture(char **file, t_cube *cube)

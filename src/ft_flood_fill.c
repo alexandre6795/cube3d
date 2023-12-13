@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flood_fill.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:21:29 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/13 11:42:11 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:44:08 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ int	verif(char **map)
 				if (i == 0 || i == ft_tablen(map) - 1 || j == 0
 					|| j == (int)ft_strlen(map[i]) - 1 || j > (int)ft_strlen(map[i - 1]) - 1 ||!map[i - 1][j] || j > (int)ft_strlen(map[i + 1]) - 1 || !map[i + 1][j]  || ma_direction(map,i,j)==1)
 				{
-					return (ft_error("map not closed"));
+					return (1);
 				}
 		}
 	}
 	return(0);
 }
 
-void	ft_flood_fill(t_cube *cube)
+int	ft_flood_fill(t_cube *cube)
 {
 	char		**copy;
 
 	copy = copy_tab(cube->map->map);
-	verif(copy);
-	print_tab(copy);
-	ft_free_tab(copy, 0);
+	if (verif(copy) == 1)
+		return(ft_free_tab(copy, 1));
+	return(ft_free_tab(copy, 0));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 15:15:13 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:43:36 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ typedef struct s_startpos
 typedef struct s_image
 {
 	char		**path;
-	mlx_image_t	*nord;
-	mlx_image_t	*south;
-	mlx_image_t	*est;
-	mlx_image_t	*west;
-	mlx_image_t	*floor;
-	mlx_image_t	*sky;
+	mlx_texture_t	*nord;
+	mlx_texture_t	*south;
+	mlx_texture_t	*est;
+	mlx_texture_t	*west;
+	mlx_texture_t	*floor;
+	mlx_texture_t	*sky;
 }				t_image;
 
 typedef struct s_tmp
@@ -94,7 +94,9 @@ int				valid_perso(char **file, int start, t_cube *cube);
 int				valid_tex(char *file);
 int				invalid_char(char **file, int start);
 // ft_flood_fill.c//
-void			ft_flood_fill(t_cube *cube);
+int				ft_flood_fill(t_cube *cube);
+// textures.c//
+int				open_textures(t_cube *cube);
 
 // test a dl avant rendu//
 void			print_map(t_cube *cube);
