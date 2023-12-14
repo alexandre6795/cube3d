@@ -6,7 +6,7 @@
 #    By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 18:12:50 by sbouheni          #+#    #+#              #
-#    Updated: 2023/12/08 11:51:02 by aherrman         ###   ########.fr        #
+#    Updated: 2023/12/14 12:32:37 by aherrman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,9 @@ SRC =		ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c	\
 			./personal/ft_atol.c												\
 			./personal/is_int_compatible.c										\
 			ft_tab.c															\
-			ft_size.c
+			ft_size.c															\
+			int_rgb_to_hex_rgb.c												\
+			utils_char.c
 
 BONUS_SRC =	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c		\
 			ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c		\

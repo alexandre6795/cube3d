@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/13 14:43:36 by akastler         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:37:31 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,79 +25,85 @@
 
 typedef struct s_startpos
 {
-	int			x;
-	int			y;
-	char		sens;
-}				t_startpos;
+	int				x;
+	int				y;
+	char			sens;
+}					t_startpos;
 
 typedef struct s_image
 {
-	char		**path;
+	char			**path;
 	mlx_texture_t	*nord;
 	mlx_texture_t	*south;
 	mlx_texture_t	*est;
 	mlx_texture_t	*west;
-	mlx_texture_t	*floor;
-	mlx_texture_t	*sky;
-}				t_image;
+	int				*floor;
+	int				*sky;
+	mlx_image_t		*black;
+	mlx_image_t		*white;
+	mlx_image_t		*red;
+}					t_image;
 
 typedef struct s_tmp
 {
-	int			i;
-	int			j;
-	int			k;
-	int			l;
-	float		w;
-	float		x;
-	float		y;
-	float		z;
+	int				i;
+	int				j;
+	int				k;
+	int				l;
+	float			w;
+	float			x;
+	float			y;
+	float			z;
 
-}				t_tmp;
+}					t_tmp;
 
 typedef struct s_player
 {
-	float		x;
-	float		y;
-}				t_player;
+	float			x;
+	float			y;
+}					t_player;
 
 typedef struct s_map
 {
-	int			size_x;
-	int			size_y;
-	int			startline;
-	char		**map;
-}				t_map;
+	int				size_x;
+	int				size_y;
+	int				startline;
+	char			**map;
+}					t_map;
 
 typedef struct s_cube
 {
-	t_startpos	*start;
-	t_player	*player;
-	t_image		*texture;
-	t_map		*map;
-	mlx_t		*mlx;
+	t_startpos		*start;
+	t_player		*player;
+	t_image			*texture;
+	t_map			*map;
+	mlx_t			*mlx;
 
-}				t_cube;
+}					t_cube;
 
 /*function declaration*/
 // ft_error.c//
-int				ft_error(char *str);
+int					ft_error(char *str);
 // ft_free.c//
-void			ft_free_all(t_cube *cube);
+void				ft_free_all(t_cube *cube);
 // valid_arg.c//
-int				ft_valid_arg(int ac, char **av, t_cube *cube);
+int					ft_valid_arg(int ac, char **av, t_cube *cube);
 // utils.c//
-t_tmp			init_temp(void);
-void			cube_strtrim(char **tab);
-void			cube_trim_nl(char **tab);
+t_tmp				init_temp(void);
+void				cube_strtrim(char **tab);
+void				cube_trim_nl(char **tab);
+void				sizemap(t_cube *cube);
 // map.c//
-int				valid_perso(char **file, int start, t_cube *cube);
-int				valid_tex(char *file);
-int				invalid_char(char **file, int start);
+int					valid_perso(char **file, int start, t_cube *cube);
+int					valid_tex(char *file);
+int					invalid_char(char **file, int start);
 // ft_flood_fill.c//
-int				ft_flood_fill(t_cube *cube);
+int					ft_flood_fill(t_cube *cube);
 // textures.c//
-int				open_textures(t_cube *cube);
+int					graphique_load(t_cube *cube);
 
 // test a dl avant rendu//
-void			print_map(t_cube *cube);
+void				print_map(t_cube *cube);
+// create_world.c//
+void				create_world(t_cube *cube);
 #endif

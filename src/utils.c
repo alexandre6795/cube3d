@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:54:28 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/13 09:30:06 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:02:52 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,25 @@ void	cube_strtrim(char **tab)
 		tab[i] = ft_substr(tab[i], supress[0], supress[1] - supress[0] + 1);
 		free(tmp);
 	}
+}
+void	sizemap(t_cube *cube)
+{
+	int	i;
+	int	res;
+
+	i = 0;
+	res = (int)ft_strlen(cube->map->map[i]);
+	cube->map->size_x = ft_tablen(cube->map->map);
+	while (cube->map->map[i])
+	{
+		if ((int)ft_strlen(cube->map->map[i]) > res)
+			res = ft_strlen(cube->map->map[i]);
+		i++;
+	}
+	cube->map->size_y = res;
+	print_map(cube);
+	printf("size x = %d\n", cube->map->size_x);
+	printf("size y = %d\n", cube->map->size_y);
 }
 
 t_tmp	init_temp(void)

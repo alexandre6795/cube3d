@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/13 14:40:53 by akastler         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:19:34 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 // int	main(int ac, char **av)
 // {
-// 	t_game	*game;
+// 	t_cube	*cube;
 
 // 	ft_valid_av(ac, av);
-// 	game = malloc(sizeof(t_game));
-// 	ft_ini_game(game);
-// 	ft_valid_game(av[1], game);
-// 	game->pic = (t_mlx *)malloc(sizeof(t_mlx));
-// 	game->mlx = mlx_init(32 * game->msize->y, 32 * game->msize->x, "MLX42",
+// 	cube = malloc(sizeof(t_cube));
+// 	ft_ini_cube(cube);
+// 	ft_valid_cube(av[1], cube);
+// 	cube->pic = (t_mlx *)malloc(sizeof(t_mlx));
+// 	cube->mlx = mlx_init(32 * cube->msize->y, 32 * cube->msize->x, "MLX42",
 // 			true);
-// 	if (!(game->mlx))
-// 		ft_error("can t open game sorry :/", game);
+// 	if (!(cube->mlx))
+// 		ft_error("can t open cube sorry :/", cube);
 // 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
-// 	ft_create_word(game->pic, game, game->mlx);
-// 	mlx_key_hook(game->mlx, &ft_keyhook, game);
-// 	mlx_loop(game->mlx);
-// 	ft_clean(game->pic, game->mlx);
-// 	if (game->pic != NULL)
-// 		free(game->pic);
-// 	ft_free(game);
-// 	mlx_terminate(game->mlx);
+// 	ft_create_word(cube->pic, cube, cube->mlx);
+// 	mlx_key_hook(cube->mlx, &ft_keyhook, cube);
+// 	mlx_loop(cube->mlx);
+// 	ft_clean(cube->pic, cube->mlx);
+// 	if (cube->pic != NULL)
+// 		free(cube->pic);
+// 	ft_free(cube);
+// 	mlx_terminate(cube->mlx);
 // 	return (0);
 // }
 void	init_for_mlx(t_cube *cube)
@@ -46,6 +46,8 @@ void	init_for_mlx(t_cube *cube)
 	cube->texture->west = NULL;
 	cube->texture->floor = NULL;
 	cube->texture->sky = NULL;
+	cube->texture->black = NULL;
+	cube->texture->white = NULL;
 	cube->mlx = NULL;
 }
 
@@ -67,21 +69,23 @@ void	init_cube(t_cube *cube)
 int	main(int ac, char **av)
 {
 	t_cube *cube;
-	int ret;
 
-	ret = 0;
 	cube = malloc(sizeof(t_cube));
 	init_cube(cube);
-	ret = ft_valid_arg(ac, av, cube);
-	if (ret == 0)
+	if (ft_valid_arg(ac, av, cube) == 0)
 	{
-		ft_printf("map:\n");
-		print_map(cube);
-		open_textures(cube);
-		// cube->mlx = mlx_init(32 * cube->map->size_y, 32 * cube->map->size_y,
-		// 		"MLX42", true);
-		// if (!(cube->mlx))
-		// 	ft_error("can t open game sorry :/);
+		sizemap(cube);
+		if (graphique_load(cube) == 0)
+		{
+			cube->mlx = mlx_init(64 * cube->map->size_y, 64 * cube->map->size_x,
+					"MLX42", true);
+			if (!(cube->mlx))
+				ft_error("can t open cube sorry");
+			mlx_set_setting(MLX_STRETCH_IMAGE, true);
+			create_world(cube);
+			// mlx_key_hook(cube->mlx, &ft_keyhook, cube);
+			mlx_loop(cube->mlx);
+		}
 	}
 	ft_free_all(cube);
 }

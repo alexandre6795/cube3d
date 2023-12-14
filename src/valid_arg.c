@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:21:10 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/13 14:42:48 by akastler         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:01:46 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,9 @@ int	ft_valid_arg(int ac, char **av, t_cube *cube)
 	if (ac != 2)
 		return (ft_error("Invalid number of arguments"));
 	if (ft_valid_file(av[1]) == 0)
+	{
 		return (valid_insidefile(av[1], cube));
+	}
 	else
 		return (1);
 }

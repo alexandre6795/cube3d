@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akastler <akastler@student.42.fr>          +#+  +:+       +#+         #
+#    By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 10:04:23 by aherrman          #+#    #+#              #
-#    Updated: 2023/12/13 14:20:08 by akastler         ###   ########.fr        #
+#    Updated: 2023/12/14 12:38:15 by aherrman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ valid_arg.c\
 map.c\
 utils.c\
 ft_flood_fill.c\
-test.c\
-textures.c
+create_world.c\
+textures.c\
+test.c
 
 SRCSB = 
 

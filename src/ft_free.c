@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 09:17:21 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/13 14:33:52 by akastler         ###   ########.fr       */
+/*   Updated: 2023/12/14 10:58:30 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	free_all_mlx(t_cube *cube)
 {
+	if (cube->texture->floor != NULL)
+		free(cube->texture->floor);
+	if (cube->texture->sky != NULL)
+		free(cube->texture->sky);
 	if (cube->texture->nord != NULL)
 		mlx_delete_texture(cube->texture->nord);
 	if (cube->texture->south != NULL)
@@ -22,10 +26,6 @@ void	free_all_mlx(t_cube *cube)
 		mlx_delete_texture(cube->texture->est);
 	if (cube->texture->west != NULL)
 		mlx_delete_texture(cube->texture->west);
-	// if (cube->texture->floor != NULL)
-	// 	mlx_delete_texture(cube->texture->floor);
-	// if (cube->texture->sky != NULL)
-	// 	mlx_delete_texture(cube->texture->sky);
 	if (cube->mlx != NULL)
 		mlx_terminate(cube->mlx);
 }
