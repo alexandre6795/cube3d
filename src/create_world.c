@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:19:19 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/14 12:48:40 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:30:24 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ void	image_to_map(t_cube *cube)
 void	create_world(t_cube *cube)
 {
 	create_image(cube);
-	create_person(cube);
+	// create_person(cube);
 	image_to_map(cube);
 }
