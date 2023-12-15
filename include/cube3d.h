@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/14 12:37:31 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:10:05 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,13 @@ void				cube_trim_nl(char **tab);
 void				sizemap(t_cube *cube);
 // map.c//
 int					valid_perso(char **file, int start, t_cube *cube);
-int					valid_tex(char *file);
+int					valid_tex(char *str, char **file);
 int					invalid_char(char **file, int start);
 // ft_flood_fill.c//
 int					ft_flood_fill(t_cube *cube);
 // textures.c//
 int					graphique_load(t_cube *cube);
-
-// test a dl avant rendu//
-void				print_map(t_cube *cube);
 // create_world.c//
 void				create_world(t_cube *cube);
+
 #endif

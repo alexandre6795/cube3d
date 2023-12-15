@@ -1,9 +1,13 @@
 erreurs:
     
-    - on peux mettre n'importe quel caractere dans le code rgb et il n'y a pas d'erreur en consequence (map erreur1)
-    - encore en rapport a voir avec le code rgb on peux mettre plus de 3 caracteres et c'est quand meme un nombre valide (genre 0000 transforme en un seul 0 par atoi) a voir si on est strict la dessus (exempre erreur3)
+    - on peux mettre n'importe quel caractere dans le code rgb et il n'y a pas d'erreur en consequence (map erreur1) OK
+    - encore en rapport a voir avec le code rgb on peux mettre plus de 3 caracteres et c'est quand meme un nombre valide (genre 0000 transforme en un seul 0 par atoi) a voir si on est strict la dessus (exempre erreur3) OK
     - pour l'instant le create person fait crash ?
-    - deux fois le "Error:" quand on a loupe l'ouverture d'une texture (map erreur2)
+    - deux fois le "Error:" quand on a loupe l'ouverture d'une texture (map erreur2)  OK
+
+    modif si deux fois meme texute ex deux SO; ok
+    modif si deux F F ; ok 
+    modif de la valid char pour avoir besoin de SO + ws pareil pour F; ok
 
 a faire :
 

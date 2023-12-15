@@ -6,7 +6,7 @@
 #    By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 10:04:23 by aherrman          #+#    #+#              #
-#    Updated: 2023/12/14 12:38:15 by aherrman         ###   ########.fr        #
+#    Updated: 2023/12/15 09:39:37 by aherrman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ utils.c\
 ft_flood_fill.c\
 create_world.c\
 textures.c\
+rgb.c\
 test.c
 
 SRCSB = 

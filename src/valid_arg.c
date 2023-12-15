@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:21:10 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/14 12:01:46 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:13:50 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	ft_valid_texture(char **file, t_cube *cube)
 	cube_strtrim(tmp);
 	while (tmp[i])
 	{
-		if (count >= 6 && valid_tex(tmp[i]) != 0)
+		if (count >= 6 && valid_tex(tmp[i], tmp) != 0)
 			return (ft_free_tab(tmp, ft_error("too many texture")));
-		else if (count <= 5 && valid_tex(tmp[i]) != 0)
+		else if (count <= 5 && valid_tex(tmp[i], tmp) != 0)
 			cube->texture->path[count++] = ft_strdup(tmp[i]);
 		else if (ft_strlen(tmp[i]) != 0)
 			break ;

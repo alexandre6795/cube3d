@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 09:17:21 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/14 10:58:30 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:14:29 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ void	ft_free_all(t_cube *cube)
 	free_all_char(cube);
 	free(cube->start);
 	free(cube->player);
+	free(cube->texture->black);
+	free(cube->texture->white);
+	//free(cube->texture->red);
 	free(cube->texture);
 	free(cube->map);
 	free(cube);

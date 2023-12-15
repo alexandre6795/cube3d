@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:59:08 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 15:25:44 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:12:45 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,23 @@ int	valid_perso(char **file, int start, t_cube *cube)
 	return (0);
 }
 
-int	valid_tex(char *file)
+int	valid_tex(char *str, char **file)
 {
-	if (ft_strncmp(file, "NO", 2) == 0 || ft_strncmp(file, "SO", 2) == 0
-		|| ft_strncmp(file, "WE", 2) == 0 || ft_strncmp(file, "EA", 2) == 0
-		|| ft_strncmp(file, "C", 1) == 0 || ft_strncmp(file, "F", 1) == 0)
+	int	i;
+
+	i = 0;
+	if (file[i] != NULL)
+	{
+		while (file[i])
+		{
+			if (ft_strncmp(str, file[i], ft_strlen(str)) == 0)
+				return (0);
+			i++;
+		}
+	}
+	if (ft_strncmp(str, "NO", 2) == 0 || ft_strncmp(str, "SO", 2) == 0
+		|| ft_strncmp(str, "WE", 2) == 0 || ft_strncmp(str, "EA", 2) == 0
+		|| ft_strncmp(str, "C", 1) == 0 || ft_strncmp(str, "F", 1) == 0)
 		return (1);
 	return (0);
 }
