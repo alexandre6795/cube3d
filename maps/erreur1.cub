@@ -1,10 +1,10 @@
  
 
-
+                                                                        F200,043,100
  
  
                     NO ./img/c1.png
-            SO ./img/c1.png  
+            SO ./img/e1.png  
 
 
 
@@ -15,15 +15,13 @@
 
 
                                     
-EA ./img/p1.png                                 
+EA./img/p1.png                                 
 
 
 
 
 
-
-F                               200,043,100
-F 225,30,0 
+                             C 225,30,0                                            
 WE                              ./img/p1.png
 
 
