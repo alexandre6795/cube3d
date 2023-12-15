@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/15 12:23:28 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/15 13:39:22 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_image
 	mlx_image_t		*black;
 	mlx_image_t		*white;
 	mlx_image_t		*red;
+	mlx_image_t		*green;
 }					t_image;
 
 typedef struct s_tmp

@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:19:19 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/15 12:50:37 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/15 14:02:30 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	create_image(t_cube *cube)
 	cube->texture->black = mlx_new_image(cube->mlx, 64, 64);
 	cube->texture->white = mlx_new_image(cube->mlx, 64, 64);
 	cube->texture->red = mlx_new_image(cube->mlx, 32, 32);
+	cube->texture->green = mlx_new_image(cube->mlx, 8, 8);
 	while (i < 64)
 	{
 		j = 0;
@@ -31,9 +32,12 @@ void	create_image(t_cube *cube)
 					0, 255));
 			mlx_put_pixel(cube->texture->white, i, j, int_rgb_to_hex_rgb(222,
 					222, 222, 100));
-			if(i<32 && j<32)
-			mlx_put_pixel(cube->texture->red, i, j, int_rgb_to_hex_rgb(222, 0,
-					0, 100));
+			if (i < 32 && j < 32)
+				mlx_put_pixel(cube->texture->red, i, j, int_rgb_to_hex_rgb(222,
+						0, 0, 100));
+			if (i < 8 && j < 8)
+				mlx_put_pixel(cube->texture->green, i, j, int_rgb_to_hex_rgb(0,
+						222, 0, 100));
 			j++;
 		}
 		i++;
@@ -54,8 +58,20 @@ int	create_person(t_cube *cube)
 		{
 			if (cube->map->map[i][j] == 'N' || cube->map->map[i][j] == 'S'
 				|| cube->map->map[i][j] == 'E' || cube->map->map[i][j] == 'W')
-				mlx_image_to_window(cube->mlx, cube->texture->red, j * 64+16, i
-					* 64+16);
+				mlx_image_to_window(cube->mlx, cube->texture->red, j * 64 + 16,
+					i * 64 + 16);
+			if (cube->map->map[i][j] == 'N')
+				mlx_image_to_window(cube->mlx, cube->texture->green, j * 64
+					+ 28, i * 64 + 8);
+			else if (cube->map->map[i][j] == 'E')
+				mlx_image_to_window(cube->mlx, cube->texture->green, j * 64 + 8,
+					i * 64 + 28);
+			else if (cube->map->map[i][j] == 'S')
+				mlx_image_to_window(cube->mlx, cube->texture->green, j * 64
+					+ 28, i * 64 + 48);
+			else if (cube->map->map[i][j] == 'W')
+				mlx_image_to_window(cube->mlx, cube->texture->green, j * 64
+					+ 48, i * 64 + 28);
 			j++;
 		}
 		i++;

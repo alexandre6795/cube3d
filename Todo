@@ -11,7 +11,7 @@ erreurs:
 
 a faire :
 
-    - ce serait bien de ne plus crash avec create person
+    - ce serait bien de ne plus crash avec create person OK
     - apres que la personne soit reparee la faire bouger grace au coordonnees de l'instance (dans image_t voir la variable instance et ce qu'elle a)
     - apres que les mouvement soit fluides dans la carte de maniere generale essayer de tirer un petit premier rayon qui se caliblre correctement sur le joueur
     - ensuite trouver comment faire changer l'angle de ce rayon

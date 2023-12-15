@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/15 12:42:42 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/15 14:14:16 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,27 @@ void	init_cube(t_cube *cube)
 	cube->map = malloc(sizeof(t_map));
 	cube->map->map = NULL;
 }
+void	ft_keyhook(mlx_key_data_t keydata, void *param)
+{
+	t_cube	*cube;
 
+	cube = param;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		mlx_close_window(cube->mlx);
+	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
+		cube->texture->red->instances[0].x += 10;
+	// 	ft_moveup(cube);
+	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+		cube->texture->red->instances[0].x -= 10;
+	// 	ft_movedown(cube);
+	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
+		cube->texture->red->instances[0].y += 10;
+	// 	ft_moveleft(cube);
+	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
+		cube->texture->red->instances[0].y -= 10;
+	// 	ft_moveright(cube);
+	// ft_anim_on_key(cube);
+}
 int	main(int ac, char **av)
 {
 	t_cube *cube;
@@ -83,7 +103,7 @@ int	main(int ac, char **av)
 				ft_error("can t open cube sorry");
 			mlx_set_setting(MLX_STRETCH_IMAGE, true);
 			create_world(cube);
-			// mlx_key_hook(cube->mlx, &ft_keyhook, cube);
+			mlx_key_hook(cube->mlx, &ft_keyhook, cube);
 			mlx_loop(cube->mlx);
 		}
 	}
