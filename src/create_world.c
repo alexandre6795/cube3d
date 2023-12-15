@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:19:19 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/14 14:30:24 by akastler         ###   ########.fr       */
+/*   Updated: 2023/12/15 12:50:37 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	create_image(t_cube *cube)
 	j = 0;
 	cube->texture->black = mlx_new_image(cube->mlx, 64, 64);
 	cube->texture->white = mlx_new_image(cube->mlx, 64, 64);
+	cube->texture->red = mlx_new_image(cube->mlx, 32, 32);
 	while (i < 64)
 	{
 		j = 0;
@@ -30,6 +31,9 @@ void	create_image(t_cube *cube)
 					0, 255));
 			mlx_put_pixel(cube->texture->white, i, j, int_rgb_to_hex_rgb(222,
 					222, 222, 100));
+			if(i<32 && j<32)
+			mlx_put_pixel(cube->texture->red, i, j, int_rgb_to_hex_rgb(222, 0,
+					0, 100));
 			j++;
 		}
 		i++;
@@ -50,7 +54,9 @@ int	create_person(t_cube *cube)
 		{
 			if (cube->map->map[i][j] == 'N' || cube->map->map[i][j] == 'S'
 				|| cube->map->map[i][j] == 'E' || cube->map->map[i][j] == 'W')
-				j++;
+				mlx_image_to_window(cube->mlx, cube->texture->red, j * 64+16, i
+					* 64+16);
+			j++;
 		}
 		i++;
 	}
@@ -84,6 +90,6 @@ void	image_to_map(t_cube *cube)
 void	create_world(t_cube *cube)
 {
 	create_image(cube);
-	// create_person(cube);
+	create_person(cube);
 	image_to_map(cube);
 }
