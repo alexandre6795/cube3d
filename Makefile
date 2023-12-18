@@ -6,7 +6,7 @@
 #    By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 10:04:23 by aherrman          #+#    #+#              #
-#    Updated: 2023/12/18 11:52:15 by aherrman         ###   ########.fr        #
+#    Updated: 2023/12/18 13:20:50 by aherrman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ ft_flood_fill.c\
 create_world.c\
 textures.c\
 rgb.c\
+loop.c\
 ray.c\
 test.c
 

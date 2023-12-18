@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/18 13:01:53 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:26:52 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,15 @@ int					open_rgb(t_cube *cube);
 int					graphique_load(t_cube *cube);
 // create_world.c//
 void				create_world(t_cube *cube);
-//ray.c
-void	default_ray(t_cube *cube);
-void	create_ray(void *arg);
+// loop.c
+void				loop_hook(void *param);
+void				loop_ray(void *arg);
+// ray.c
+void				default_ray(t_cube *cube);
+void				create_ray(void *arg);
+void				drawline(int xstart, int ystart, int xstop, int ystop,
+						t_cube *cube);
+void				resetImageRay(t_cube *cube);
 
 // test.c//
 void				print_map(t_cube *cube);
