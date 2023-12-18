@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 09:17:21 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/15 11:14:29 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:52:48 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	free_all_mlx(t_cube *cube)
 		mlx_delete_texture(cube->texture->est);
 	if (cube->texture->west != NULL)
 		mlx_delete_texture(cube->texture->west);
-	if (cube->mlx != NULL)
-		mlx_terminate(cube->mlx);
 }
 
 void	free_all_char(t_cube *cube)
@@ -38,16 +36,26 @@ void	free_all_char(t_cube *cube)
 		ft_free_tab(cube->texture->path, 0);
 }
 
+void free_all_player(t_cube *cube)
+{
+	if (cube->player->ray)
+		free(cube->player->ray);
+}
+
 void	ft_free_all(t_cube *cube)
 {
 	free_all_mlx(cube);
 	free_all_char(cube);
 	free(cube->start);
+	free_all_player(cube);
 	free(cube->player);
-	free(cube->texture->black);
-	free(cube->texture->white);
-	//free(cube->texture->red);
+	mlx_delete_image(cube->mlx, cube->texture->black);
+	mlx_delete_image(cube->mlx, cube->texture->white);
+	mlx_delete_image(cube->mlx, cube->texture->red);
+	mlx_close_window(cube->mlx);
 	free(cube->texture);
 	free(cube->map);
+	if (cube->mlx != NULL)
+		mlx_terminate(cube->mlx);
 	free(cube);
 }

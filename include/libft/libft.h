@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:08:51 by sbouheni          #+#    #+#             */
-/*   Updated: 2023/12/14 12:32:09 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/18 09:28:02 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ void				print_tab(char **tab);
 // utils_char.c
 int					skip_wp(char *str);
 //rgb
-int	int_rgb_to_hex_rgb(int r, int g, int b, int a);
+int	rgba(int r, int g, int b, int a);
 
 #endif

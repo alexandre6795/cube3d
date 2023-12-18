@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_rgb_to_hex_rgb.c                               :+:      :+:    :+:   */
+/*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 12:30:38 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/18 09:27:20 by aherrman         ###   ########.fr       */
+/*   Created: 2023/12/18 11:52:07 by aherrman          #+#    #+#             */
+/*   Updated: 2023/12/18 11:54:53 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/cube3d.h"
 
-int	rgba(int r, int g, int b, int a)
+void	default_ray(t_cube *cube)
 {
-	return (r << 24 | g << 16 | b << 8 | a);
+	int	i;
+
+	i = 0;
+	while (i < NB_RAY)
+	{
+		cube->player->ray[i].x = cube->player->x;
+		cube->player->ray[i].y = cube->player->y;
+		cube->player->ray[i].dist = 0;
+		cube->player->ray[i].angle = cube->player->angle;
+	}
 }

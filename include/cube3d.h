@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/15 13:39:22 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:47:31 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+# define PI 3.14159265358979323846
+# define NB_RAY 1
+# define DISTANCE_MAX_RAY 100
 
 typedef struct s_startpos
 {
@@ -58,10 +62,21 @@ typedef struct s_tmp
 
 }					t_tmp;
 
+typedef struct s_ray
+{
+	float			x;
+	float			y;
+	float			angle;
+	float			dist;
+}					t_ray;
+
 typedef struct s_player
 {
 	float			x;
 	float			y;
+	int				angle;
+	int				fov;
+	t_ray			*ray;
 }					t_player;
 
 typedef struct s_map

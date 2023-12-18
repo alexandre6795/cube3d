@@ -6,7 +6,7 @@
 #    By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 10:04:23 by aherrman          #+#    #+#              #
-#    Updated: 2023/12/15 09:39:37 by aherrman         ###   ########.fr        #
+#    Updated: 2023/12/18 11:52:15 by aherrman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ ft_flood_fill.c\
 create_world.c\
 textures.c\
 rgb.c\
+ray.c\
 test.c
 
 SRCSB = 
@@ -52,7 +53,7 @@ $(NAME):	$(OBJS)
 	gcc $(FLAG) $(OBJS) $(LIBS) -o $(NAME)
 
 debug:	$(OBJS)
-	make all -C ./src/libft
+	make all -C ./include/libft
 	cd ./include/.MLX42 && cmake -B build && cmake --build build -j4
 	gcc $(FLAG) -fsanitize=address $(OBJS) $(LIBS) -o $(NAME)
 
