@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/18 11:50:20 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:01:51 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ int	main(int ac, char **av)
 			mlx_set_setting(MLX_STRETCH_IMAGE, true);
 			create_world(cube);
 			mlx_loop_hook(cube->mlx, &mlx_hook, cube);
+			mlx_loop_hook(cube->mlx, &create_ray, cube);
+			
 			mlx_loop(cube->mlx);
 		}
 	}

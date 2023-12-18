@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/18 11:47:31 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:01:53 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,10 @@ int					open_rgb(t_cube *cube);
 int					graphique_load(t_cube *cube);
 // create_world.c//
 void				create_world(t_cube *cube);
+//ray.c
+void	default_ray(t_cube *cube);
+void	create_ray(void *arg);
+
 // test.c//
 void				print_map(t_cube *cube);
 

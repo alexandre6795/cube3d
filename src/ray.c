@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:52:07 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/18 11:54:53 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:10:16 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	default_ray(t_cube *cube)
 		cube->player->ray[i].y = cube->player->y;
 		cube->player->ray[i].dist = 0;
 		cube->player->ray[i].angle = cube->player->angle;
+		i++;
 	}
 }
