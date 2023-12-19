@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:21:10 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/15 12:32:19 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:53:07 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,15 @@ int	ft_valid_map(char **file, t_cube *cube)
 		return (ft_error("map not closed"));
 	return (0);
 }
-int ft_is_not_in(char **tab, char *str)
+int	ft_is_not_in(char **tab, char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])
 	{
-		
 		if (ft_strncmp(tab[i], str, 2) == 0)
-		{
-			
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -50,7 +46,7 @@ int	ft_valid_texture(char **file, t_cube *cube)
 	i = 0;
 	count = 0;
 	cube_strtrim(tmp);
-	while (tmp[i]&& ft_is_not_in(cube->texture->path, tmp[i]) != 1)
+	while (tmp[i] && ft_is_not_in(cube->texture->path, tmp[i]) != 1)
 	{
 		if (count >= 6 && valid_tex(tmp[i]) != 0)
 			return (ft_free_tab(tmp, ft_error("too many texture")));
@@ -62,7 +58,6 @@ int	ft_valid_texture(char **file, t_cube *cube)
 	}
 	ft_free_tab(tmp, 0);
 	cube->map->startline = i;
-	printf("count = %d\n", count);
 	if (count < 6)
 		return (ft_error("error on texture"));
 	return (0);

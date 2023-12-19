@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/18 13:26:26 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:53:53 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int ac, char **av)
 	init_cube(cube);
 	if (ft_valid_arg(ac, av, cube) == 0)
 	{
-		sizemap(cube);
+		sizemap(cube);// print de la map dedans atm
 		if (graphique_load(cube) == 0)
 		{
 			cube->mlx = mlx_init(64 * cube->map->size_y, 64 * cube->map->size_x,

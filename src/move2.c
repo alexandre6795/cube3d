@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_world.c                                     :+:      :+:    :+:   */
+/*   move2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 12:19:19 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/19 09:37:32 by aherrman         ###   ########.fr       */
+/*   Created: 2023/12/19 11:27:48 by aherrman          #+#    #+#             */
+/*   Updated: 2023/12/19 11:34:19 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cube3d.h"
+#include   "../include/cube3d.h"
 
-void	create_world(t_cube *cube)
+void rot_left(t_cube *cube)
 {
-	create_minimap(cube);
-	create_person(cube);
-	image_to_map(cube);
+    (void)cube;
+}
+void rot_right(t_cube *cube)
+{
+    (void)cube;
 }

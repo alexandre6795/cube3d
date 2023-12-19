@@ -6,7 +6,7 @@
 #    By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 10:04:23 by aherrman          #+#    #+#              #
-#    Updated: 2023/12/18 13:20:50 by aherrman         ###   ########.fr        #
+#    Updated: 2023/12/19 11:29:04 by aherrman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,15 @@ map.c\
 utils.c\
 ft_flood_fill.c\
 create_world.c\
+create_minimap.c\
+create_minimapuser.c\
+image_on_minimap.c\
 textures.c\
 rgb.c\
 loop.c\
+move2.c\
 ray.c\
+utils_ray.c\
 test.c
 
 SRCSB = 

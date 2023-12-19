@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:37:11 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/15 11:07:45 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:54:41 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_valid_rgb(char **splited)
 		return (ft_free_tab(splited, ft_error("RGB not valid")));
 	while (splited[i])
 	{
-		printf("splited[%d] = [%s]\n", i, splited[i]);
 		if (ft_strlen(splited[i]) > 3)
 			return (ft_error("RGB value dont have 3 digits"));
 		j = 0;

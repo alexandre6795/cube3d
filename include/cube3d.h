@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/18 13:26:52 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/19 12:03:12 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,15 +121,28 @@ int					open_rgb(t_cube *cube);
 int					graphique_load(t_cube *cube);
 // create_world.c//
 void				create_world(t_cube *cube);
+// create_minimap.c//
+void				create_minimap(t_cube *cube);
+// create_minimapuser.c//
+int					create_person(t_cube *cube);
+// image_on_minimap.c//
+void				image_to_map(t_cube *cube);
 // loop.c
 void				loop_hook(void *param);
 void				loop_ray(void *arg);
+// move2.c
+void				rot_left(t_cube *cube);
+void				rot_right(t_cube *cube);
 // ray.c
 void				default_ray(t_cube *cube);
 void				create_ray(void *arg);
 void				drawline(int xstart, int ystart, int xstop, int ystop,
 						t_cube *cube);
 void				resetImageRay(t_cube *cube);
+// utils_ray.c
+void				default_value(int *d, int *inc);
+void				dl1(t_cube *cube, int *pos, int *d, int *inc);
+void				dl2(t_cube *cube, int *pos, int *d, int *inc);
 
 // test.c//
 void				print_map(t_cube *cube);
