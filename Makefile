@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+         #
+#    By: akastler <akastler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 10:04:23 by aherrman          #+#    #+#              #
-#    Updated: 2023/12/19 11:29:04 by aherrman         ###   ########.fr        #
+#    Updated: 2024/01/03 11:30:13 by akastler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,16 @@ create_minimap.c\
 create_minimapuser.c\
 image_on_minimap.c\
 textures.c\
+drawline.c\
 rgb.c\
 loop.c\
+move.c\
 move2.c\
+move_utils.c\
 ray.c\
 utils_ray.c\
+pi_utils.c\
+wall_collision.c\
 test.c
 
 SRCSB = 
@@ -83,9 +88,14 @@ clean:
 fclean:	clean
 	$(RM) $(NAME)
 	make fclean -C ./include/libft
-	rm -rf ./include/.MLX42/build
+#	rm -rf ./include/.MLX42/build
 #	make clean -C /Users/aherrman/goinfre/.MLX42/build
+
+clean_mlx:
+	rm -rf ./include/.MLX42/build
 	
 re:	fclean all
+
+re_mlx:	clean_mlx fclean all
 
 ret: fclean test

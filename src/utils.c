@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:54:28 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/19 10:53:40 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:14:18 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	cube_strtrim(char **tab)
 	{
 		if (ft_strlen(tab[i]) == 0)
 			continue ;
-		j = 0; // de 9 a 13 et 32
+		j = 0;
 		while (tab[i][j] && (tab[i][j] == ' ' || (tab[i][j] >= 9
 					&& tab[i][j] <= 13)))
 			j++;
@@ -53,29 +53,31 @@ void	cube_strtrim(char **tab)
 		free(tmp);
 	}
 }
+
 void	sizemap(t_cube *cube)
 {
 	int	i;
 	int	res;
+	int	temp;
 
 	i = 0;
 	res = (int)ft_strlen(cube->map->map[i]);
 	cube->map->size_x = ft_tablen(cube->map->map);
 	while (cube->map->map[i])
 	{
-		if ((int)ft_strlen(cube->map->map[i]) > res)
-			res = ft_strlen(cube->map->map[i]);
+		temp = (int)ft_strlen(cube->map->map[i]);
+		while (cube->map->map[i][temp] != '1')
+			temp--;
+		if (temp > res)
+			res = temp;
 		i++;
 	}
-	cube->map->size_y = res;
-	print_map(cube);
-	printf("size x = %d\n", cube->map->size_x);
-	printf("size y = %d\n", cube->map->size_y);
+	cube->map->size_y = res + 1;
 }
 
 t_tmp	init_temp(void)
 {
-	t_tmp temp;
+	t_tmp	temp;
 
 	temp.i = 0;
 	temp.j = 0;
@@ -86,4 +88,18 @@ t_tmp	init_temp(void)
 	temp.y = 0;
 	temp.z = 0;
 	return (temp);
+}
+
+int	ft_is_not_in(char **tab, char *str)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		if (ft_strncmp(tab[i], str, 2) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
 }

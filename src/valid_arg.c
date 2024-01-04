@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:21:10 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/19 10:53:07 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/03 09:33:21 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,6 @@ int	ft_valid_map(char **file, t_cube *cube)
 		return (ft_error("map don't have initial position for user"));
 	if (ft_flood_fill(cube) != 0)
 		return (ft_error("map not closed"));
-	return (0);
-}
-int	ft_is_not_in(char **tab, char *str)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		if (ft_strncmp(tab[i], str, 2) == 0)
-			return (1);
-		i++;
-	}
 	return (0);
 }
 
@@ -117,7 +104,7 @@ int	ft_valid_arg(int ac, char **av, t_cube *cube)
 {
 	if (ac != 2)
 		return (ft_error("Invalid number of arguments"));
-	if (ft_valid_file(av[1]) == 0)
+	else if (ft_valid_file(av[1]) == 0)
 	{
 		return (valid_insidefile(av[1], cube));
 	}

@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_rgb_to_hex_rgb.c                               :+:      :+:    :+:   */
+/*   pi_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 12:30:38 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/21 10:47:18 by akastler         ###   ########.fr       */
+/*   Created: 2023/12/20 11:15:52 by aherrman          #+#    #+#             */
+/*   Updated: 2023/12/21 11:05:04 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/cube3d.h"
 
-int	rgba(int r, int g, int b, int a)
+float	convert_deg_pirad(float deg)
 {
-	return (r << 24 | g << 16 | b << 8 | a);
+	return ((deg / 180) * PI);
+}
+
+float	convert_pirad_deg(float pirad)
+{
+	return ((pirad / PI) * 180);
 }

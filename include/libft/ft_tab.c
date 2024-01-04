@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tab.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:55:23 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/12 11:25:12 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/21 10:46:44 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	ft_free_tab(char **tab, int r)
 
 char	**copy_tab(char **tab)
 {
-	int i;
-	char **copy;
+	int		i;
+	char	**copy;
 
 	i = 0;
 	copy = malloc(sizeof(char *) * (ft_tablen(tab) + 1));
@@ -54,9 +54,9 @@ char	**copy_tab(char **tab)
 	return (copy);
 }
 
-void print_tab(char **tab)
+void	print_tab(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:08:51 by sbouheni          #+#    #+#             */
-/*   Updated: 2023/12/18 09:28:02 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/21 10:46:35 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ void				print_tab(char **tab);
 // utils_char.c
 int					skip_wp(char *str);
 //rgb
-int	rgba(int r, int g, int b, int a);
+int					rgba(int r, int g, int b, int a);
 
 #endif

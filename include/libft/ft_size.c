@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_size.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 10:05:05 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/08 10:06:23 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/21 10:46:21 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_size(int fd)
 {
-	int i;
-	char *s;
-	int t;
+	int		i;
+	char	*s;
+	int		t;
 
 	t = fd;
 	i = 0;

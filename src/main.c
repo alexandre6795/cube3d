@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/19 10:53:53 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/04 15:54:41 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ void	init_for_mlx(t_cube *cube)
 	cube->texture->black = NULL;
 	cube->texture->white = NULL;
 	cube->texture->red = NULL;
+	cube->texture->circle = NULL;
+	cube->texture->rendu = NULL;
 	cube->mlx = NULL;
 }
+
 void	init_ray(t_cube *cube)
 {
 	int	i;
@@ -59,6 +62,7 @@ void	init_cube(t_cube *cube)
 	cube->map->map = NULL;
 	init_ray(cube);
 }
+
 void	loop(t_cube *cube)
 {
 	mlx_loop_hook(cube->mlx, &loop_hook, cube);
@@ -67,17 +71,16 @@ void	loop(t_cube *cube)
 
 int	main(int ac, char **av)
 {
-	t_cube *cube;
+	t_cube	*cube;
 
 	cube = malloc(sizeof(t_cube));
 	init_cube(cube);
 	if (ft_valid_arg(ac, av, cube) == 0)
 	{
-		sizemap(cube);// print de la map dedans atm
+		sizemap(cube);
 		if (graphique_load(cube) == 0)
 		{
-			cube->mlx = mlx_init(64 * cube->map->size_y, 64 * cube->map->size_x,
-					"MLX42", true);
+			cube->mlx = mlx_init(NB_RAY, HEIGHT, "MLX42", true);
 			if (!(cube->mlx))
 				ft_error("can t open cube sorry");
 			mlx_set_setting(MLX_STRETCH_IMAGE, true);

@@ -6,14 +6,13 @@
 /*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:21:29 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/13 14:44:08 by akastler         ###   ########.fr       */
+/*   Updated: 2023/12/21 10:59:43 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
-
-int ma_direction(char **map,int i ,int j)
+int	ma_direction(char **map, int i, int j)
 {
 	if ((map[i - 1][j] != '1' && map[i - 1][j] != '0' && map[i - 1][j] != 'N'
 			&& map[i - 1][j] != 'S' && map[i - 1][j] != 'E'
@@ -31,7 +30,6 @@ int ma_direction(char **map,int i ,int j)
 	return (0);
 }
 
-
 int	verif(char **map)
 {
 	int	j;
@@ -40,19 +38,22 @@ int	verif(char **map)
 	i = -1;
 	while (map[++i])
 	{
-			j = -1;
+		j = -1;
 		while (map[i][++j])
 		{
 			if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S'
 				|| map[i][j] == 'E' || map[i][j] == 'W')
+			{
 				if (i == 0 || i == ft_tablen(map) - 1 || j == 0
-					|| j == (int)ft_strlen(map[i]) - 1 || j > (int)ft_strlen(map[i - 1]) - 1 ||!map[i - 1][j] || j > (int)ft_strlen(map[i + 1]) - 1 || !map[i + 1][j]  || ma_direction(map,i,j)==1)
-				{
+					|| j == (int)ft_strlen(map[i]) - 1
+					|| j > (int)ft_strlen(map[i - 1]) - 1
+					||!map[i - 1][j] || j > (int)ft_strlen(map[i + 1]) - 1
+					|| !map[i + 1][j] || ma_direction(map, i, j) == 1)
 					return (1);
-				}
+			}
 		}
 	}
-	return(0);
+	return (0);
 }
 
 int	ft_flood_fill(t_cube *cube)
@@ -61,6 +62,6 @@ int	ft_flood_fill(t_cube *cube)
 
 	copy = copy_tab(cube->map->map);
 	if (verif(copy) == 1)
-		return(ft_free_tab(copy, 1));
-	return(ft_free_tab(copy, 0));
+		return (ft_free_tab(copy, 1));
+	return (ft_free_tab(copy, 0));
 }

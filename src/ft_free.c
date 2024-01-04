@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 09:17:21 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/18 11:52:48 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/03 10:41:55 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	free_all_char(t_cube *cube)
 		ft_free_tab(cube->texture->path, 0);
 }
 
-void free_all_player(t_cube *cube)
+void	free_all_player(t_cube *cube)
 {
 	if (cube->player->ray)
 		free(cube->player->ray);
@@ -49,12 +49,18 @@ void	ft_free_all(t_cube *cube)
 	free(cube->start);
 	free_all_player(cube);
 	free(cube->player);
-	mlx_delete_image(cube->mlx, cube->texture->black);
-	mlx_delete_image(cube->mlx, cube->texture->white);
-	mlx_delete_image(cube->mlx, cube->texture->red);
-	mlx_close_window(cube->mlx);
+	if (cube->texture->black)
+		mlx_delete_image(cube->mlx, cube->texture->black);
+	if (cube->texture->white)
+		mlx_delete_image(cube->mlx, cube->texture->white);
+	if (cube->texture->red)
+		mlx_delete_image(cube->mlx, cube->texture->red);
+	if (cube->texture->circle)
+		mlx_delete_image(cube->mlx, cube->texture->circle);
 	free(cube->texture);
 	free(cube->map);
+	if (cube->mlx)
+		mlx_close_window(cube->mlx);
 	if (cube->mlx != NULL)
 		mlx_terminate(cube->mlx);
 	free(cube);

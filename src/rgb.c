@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:37:11 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/19 10:54:41 by aherrman         ###   ########.fr       */
+/*   Updated: 2023/12/21 10:57:20 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	*create_rgb(int r, int g, int b)
 {
 	int	*rgb;
 
-
 	rgb = malloc(sizeof(int) * 3);
 	rgb[0] = r;
 	rgb[1] = g;
@@ -72,8 +71,8 @@ int	rgb_create(char *str, t_cube *cube, char c)
 
 int	open_rgb(t_cube *cube)
 {
-	int i;
-	int ret;
+	int	i;
+	int	ret;
 
 	ret = 0;
 	i = 0;

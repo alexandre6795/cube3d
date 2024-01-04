@@ -19,5 +19,10 @@ a faire :
 
 (si tu arrive a faire tout ca de maniere stable bien joue et tien moi au courant)
 
+tout le contenu pour drawline a ete deplace dans son fichier correspondant et est norme
 
-DDA a voir + raycast a voir 
+
+toute la norme a ete faite et le raycast pour un rayon fonctionne correctement au premier coup d'oeil
+on a maintenant un petit point pour le perso et les rayons sont correctement centres et c'est deja tout norme
+
+update du 3 janvier, tout les rayons sont prets a etre utiliser pour l'affichage en 3d, tout est a la norme suffit de suprimer les commentaires dans le code
