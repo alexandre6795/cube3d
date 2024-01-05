@@ -1,0 +1,28 @@
+erreurs:
+    
+    - on peux mettre n'importe quel caractere dans le code rgb et il n'y a pas d'erreur en consequence (map erreur1) OK
+    - encore en rapport a voir avec le code rgb on peux mettre plus de 3 caracteres et c'est quand meme un nombre valide (genre 0000 transforme en un seul 0 par atoi) a voir si on est strict la dessus (exempre erreur3) OK
+    - pour l'instant le create person fait crash ?
+    - deux fois le "Error:" quand on a loupe l'ouverture d'une texture (map erreur2)  OK
+
+    modif si deux fois meme texute ex deux SO; ok
+    modif si deux F F ; ok 
+    modif de la valid char pour avoir besoin de SO + ws pareil pour F; ok
+
+a faire :
+
+    - ce serait bien de ne plus crash avec create person OK
+    - apres que la personne soit reparee la faire bouger grace au coordonnees de l'instance (dans image_t voir la variable instance et ce qu'elle a)
+    - apres que les mouvement soit fluides dans la carte de maniere generale essayer de tirer un petit premier rayon qui se caliblre correctement sur le joueur
+    - ensuite trouver comment faire changer l'angle de ce rayon
+    - et pour finir faire se deplacer l'instance du joueur par rapport a l'angle du rayon
+
+(si tu arrive a faire tout ca de maniere stable bien joue et tien moi au courant)
+
+tout le contenu pour drawline a ete deplace dans son fichier correspondant et est norme
+
+
+toute la norme a ete faite et le raycast pour un rayon fonctionne correctement au premier coup d'oeil
+on a maintenant un petit point pour le perso et les rayons sont correctement centres et c'est deja tout norme
+
+update du 3 janvier, tout les rayons sont prets a etre utiliser pour l'affichage en 3d, tout est a la norme suffit de suprimer les commentaires dans le code
