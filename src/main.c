@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/05 10:37:56 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/05 11:11:20 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	init_cube(t_cube *cube)
 	cube->player->angle = 0;
 	cube->player->fov = 60;
 	cube->texture = malloc(sizeof(t_image));
+	cube->player->projection_plane = ((NB_RAY / 2) / tan(30 * PI / 180));
 	init_for_mlx(cube);
 	cube->map = malloc(sizeof(t_map));
 	cube->map->map = NULL;

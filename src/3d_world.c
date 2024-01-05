@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:26:10 by akastler          #+#    #+#             */
-/*   Updated: 2024/01/05 10:24:53 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/05 11:10:18 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	draw_3d(t_cube *cube, int ray_nbr)
 
 	i = 0;
     cube->player->ray[ray_nbr].dist = cube->player->ray[ray_nbr].dist * cos(cube->player->ray[ray_nbr].angle - cube->player->angle);
-	dist = (HEIGHT * 64) / cube->player->ray[ray_nbr].dist;
+	dist = 64 / cube->player->ray[ray_nbr].dist
+		* cube->player->projection_plane;
 	while (i < HEIGHT)
 	{
 		if (i < (HEIGHT - dist) / 2)
