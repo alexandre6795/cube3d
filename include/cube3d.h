@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/05 11:10:48 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/05 12:42:36 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,19 @@ typedef struct s_image
 	mlx_image_t		*circle;
 	mlx_image_t		*rendu;
 }					t_image;
+
+typedef struct s_wall
+{
+	float			current_step;
+	float			step;
+	float			wall;
+	int				color;
+	int				value;
+	float			hauteur;
+	int				size;
+	float			dist;
+	mlx_texture_t	*texture;
+}					t_wall;
 
 typedef struct s_tmp
 {
