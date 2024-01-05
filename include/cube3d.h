@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/04 17:06:20 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/05 09:27:04 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_ray
 	float			y;
 	float			angle;
 	float			dist;
+	int				hitted;
 }					t_ray;
 
 typedef struct s_player
@@ -176,5 +177,8 @@ void				ft_moveright(t_cube *cube);
 
 // move_utils.c
 int					calc_dist_before_hit(t_cube *cube, int direction);
+
+// 3d_world.c
+void				draw_3d(t_cube *cube, int ray_nbr);
 
 #endif

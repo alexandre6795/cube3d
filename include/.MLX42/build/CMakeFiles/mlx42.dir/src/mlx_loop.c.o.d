@@ -1,7 +1,7 @@
 CMakeFiles/mlx42.dir/src/mlx_loop.c.o: \
-  /local-home/aherrman/Desktop/cube3d/include/.MLX42/src/mlx_loop.c \
-  /local-home/aherrman/Desktop/cube3d/include/.MLX42/include/MLX42/MLX42_Int.h \
-  /local-home/aherrman/Desktop/cube3d/include/.MLX42/include/MLX42/MLX42.h \
+  /local-home/akastler/Desktop/cube3d/include/.MLX42/src/mlx_loop.c \
+  /local-home/akastler/Desktop/cube3d/include/.MLX42/include/MLX42/MLX42_Int.h \
+  /local-home/akastler/Desktop/cube3d/include/.MLX42/include/MLX42/MLX42.h \
   /usr/lib/llvm-12/lib/clang/12.0.1/include/stdint.h \
   /usr/include/stdint.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -19,12 +19,12 @@ CMakeFiles/mlx42.dir/src/mlx_loop.c.o: \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
   /usr/lib/llvm-12/lib/clang/12.0.1/include/stdbool.h \
-  /local-home/aherrman/Desktop/cube3d/include/.MLX42/include/MLX42/MLX42_Input.h \
-  /local-home/aherrman/Desktop/cube3d/include/.MLX42/include/lodepng/lodepng.h \
+  /local-home/akastler/Desktop/cube3d/include/.MLX42/include/MLX42/MLX42_Input.h \
+  /local-home/akastler/Desktop/cube3d/include/.MLX42/include/lodepng/lodepng.h \
   /usr/include/string.h \
   /usr/lib/llvm-12/lib/clang/12.0.1/include/stddef.h \
-  /local-home/aherrman/Desktop/cube3d/include/.MLX42/include/glad/glad.h \
-  /local-home/aherrman/Desktop/cube3d/include/.MLX42/include/KHR/khrplatform.h \
+  /local-home/akastler/Desktop/cube3d/include/.MLX42/include/glad/glad.h \
+  /local-home/akastler/Desktop/cube3d/include/.MLX42/include/KHR/khrplatform.h \
   /usr/include/GLFW/glfw3.h \
   /usr/lib/llvm-12/lib/clang/12.0.1/include/__stddef_max_align_t.h \
   /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/floatn.h \
