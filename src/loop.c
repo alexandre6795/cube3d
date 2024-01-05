@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:12:52 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/05 09:26:41 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/05 10:35:43 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ void	loop_hook(void *param)
 		rot_left(cube);
 	if (mlx_is_key_down(cube->mlx, MLX_KEY_RIGHT))
 		rot_right(cube);
-
+	// printf("\rX = %f   Y = %f   Angle = %f", cube->player->x,
+		// cube->player->y,
+	// 	convert_pirad_deg(cube->player->angle));
 }
 
-void determinate_hitted(t_cube *cube, int ray_nbr)
+void	determinate_hitted(t_cube *cube, int ray_nbr)
 {
 	if (cube->player->ray[ray_nbr].hitted == 1)
 	{
@@ -96,8 +98,8 @@ void	loop_ray(void *arg)
 	while (i < NB_RAY)
 	{
 		stop = get_smallest_ray(cube, i);
-		drawline((int [2]){cube->player->x / 4, cube->player->y / 4},
-			(int [2]){(int)stop[0] / 4, (int)stop[1] / 4}, cube);
+		drawline((int[2]){cube->player->x / 4, cube->player->y / 4},
+			(int[2]){(int)stop[0] / 4, (int)stop[1] / 4}, cube);
 		draw_3d(cube, i);
 		free(stop);
 		i++;

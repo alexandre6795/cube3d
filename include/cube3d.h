@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/05 09:27:04 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/05 10:42:58 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_image
 	mlx_texture_t	*south;
 	mlx_texture_t	*est;
 	mlx_texture_t	*west;
+	mlx_texture_t	*door[2];
 	int				*floor;
 	int				*sky;
 	mlx_image_t		*black;

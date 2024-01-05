@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 14:06:14 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/04 15:34:56 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/05 10:33:39 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void	ft_moveright(t_cube *cube)
 	addxy[1] = sinf(cube->player->angle - convert_deg_pirad(90)) * 5;
 	cube->player->y -= addxy[1];
 	cube->player->x -= addxy[0];
-	cube->texture->circle->instances[0].x = cube->player->x/ 4 - 4;
+	cube->texture->circle->instances[0].x = cube->player->x / 4 - 4;
 	cube->texture->circle->instances[0].y = cube->player->y / 4 - 4;
 }

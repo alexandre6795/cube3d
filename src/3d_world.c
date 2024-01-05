@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3d_world.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:26:10 by akastler          #+#    #+#             */
-/*   Updated: 2024/01/05 09:45:55 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/05 10:24:53 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ void	draw_3d(t_cube *cube, int ray_nbr)
 
 	i = 0;
     cube->player->ray[ray_nbr].dist = cube->player->ray[ray_nbr].dist * cos(cube->player->ray[ray_nbr].angle - cube->player->angle);
-	dist = (HEIGHT * 128) / cube->player->ray[ray_nbr].dist;
+	dist = (HEIGHT * 64) / cube->player->ray[ray_nbr].dist;
 	while (i < HEIGHT)
 	{
-		if (i < (HEIGHT - dist) / 2 || i > (HEIGHT + dist) / 2)
-			color = rgba(0, 0, 0, 255);
+		if (i < (HEIGHT - dist) / 2)
+			color = rgba(cube->texture->sky[0], cube->texture->sky[1], cube->texture->sky[0], 255);
+		else if (i > (HEIGHT + dist) / 2)
+			color = rgba(cube->texture->floor[0],cube->texture->floor[1],cube->texture->floor[2],255);
 		else
 			color = get_color(cube, ray_nbr, i);
 		mlx_put_pixel(cube->texture->rendu, ray_nbr, i, color);
