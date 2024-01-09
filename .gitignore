@@ -1,0 +1,5 @@
+minishell
+*.o
+*.a
+.vscode/
+sup.txt
