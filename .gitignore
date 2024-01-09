@@ -1,5 +1,5 @@
-minishell
+cub3D
 *.o
 *.a
 .vscode/
-sup.txt
+include/.MLX42/build/
