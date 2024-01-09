@@ -6,7 +6,7 @@
 /*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:26:10 by akastler          #+#    #+#             */
-/*   Updated: 2024/01/09 10:27:57 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/09 10:33:05 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	get_color(t_cube *cube, int ray_nbr, t_wall *wall)
 		|| cube->player->ray[ray_nbr].hitted == 3)
 	{
 		wall->value
-			= (((int)(cube->player->ray[ray_nbr].x / (62 / wall->texture->height)) % wall->texture->height)
+			= (((int)(cube->player->ray[ray_nbr].x / (64 / wall->texture->height)) % wall->texture->height)
 				+ ((int)wall->current * wall->texture->height)) * 4;
 	}
 	else
