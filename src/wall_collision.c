@@ -6,66 +6,78 @@
 /*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:12:04 by akastler          #+#    #+#             */
-/*   Updated: 2023/12/28 16:16:20 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/09 08:35:11 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
-float	*wall_collision_vert(t_cube *cube, t_ray ray)
+void	get_block_type(t_ray *ray, float actualxy[2], t_cube *cube)
 {
-	float	*actualxy;
-	float	tang;
-	float	incrementxy[2];
+	if (actualxy[0] && actualxy[1]
+		&& cube->map->map[(int)actualxy[1] / 64][(int)actualxy[0] / 64])
+		ray->block_type = cube->map->map[(int)actualxy[1] / 64][(int)actualxy[0]
+			/ 64];
+}
 
-	actualxy = malloc(sizeof(float) * 2);
-	tang = -tanf(ray.angle);
-	incrementxy[0] = 64;
-	actualxy[0] = ((int)(ray.x / 64)*64) + 64;
+void	init_raycast(t_raycast *rayc, int setting, t_ray ray)
+{
+	rayc->actxy = malloc(sizeof(float) * 2);
+	rayc->tang = -tanf(ray.angle);
+	rayc->incrementxy[0] = 64;
+	rayc->actxy[0] = ((int)(ray.x / 64)*64) + 64;
 	if (ray.angle > (PI / 2) && ray.angle < (3 * PI / 2))
 	{
-		incrementxy[0] = -64;
-		actualxy[0] = ((int)(ray.x / 64)*64) - 0.0002;
+		rayc->incrementxy[0] = -64;
+		rayc->actxy[0] = ((int)(ray.x / 64)*64) - 0.0002;
 	}
-	actualxy[1] = (ray.x - actualxy[0]) * tang + ray.y;
-	incrementxy[1] = -incrementxy[0] * tang;
-	while (actualxy[0] >= 0 && actualxy[1] >= 0
-		&& actualxy[0] < cube->map->size_y * 64
-		&& actualxy[1] < cube->map->size_x * 64)
+	rayc->actxy[1] = (ray.x - rayc->actxy[0]) * rayc->tang + ray.y;
+	rayc->incrementxy[1] = -rayc->incrementxy[0] * rayc->tang;
+	if (setting == 1)
 	{
-		if (cube->map->map[(int)actualxy[1] / 64][(int)actualxy[0] / 64] == '1')
-			break ;
-		actualxy[0] += incrementxy[0];
-		actualxy[1] += incrementxy[1];
+		rayc->tang = -1.0f / tanf(ray.angle);
+		rayc->incrementxy[1] = 64;
+		rayc->actxy[1] = ((int)(ray.y / 64)*64) + 64;
+		if (ray.angle > PI)
+		{
+			rayc->incrementxy[1] = -64;
+			rayc->actxy[1] = ((int)(ray.y / 64)*64) - 0.0002;
+		}
+		rayc->actxy[0] = (ray.y - rayc->actxy[1]) * rayc->tang + ray.x;
+		rayc->incrementxy[0] = -rayc->incrementxy[1] * rayc->tang;
 	}
-	return (actualxy);
+}
+
+float	*wall_collision_vert(t_cube *cube, t_ray ray)
+{
+	t_raycast	rc;
+
+	init_raycast(&rc, 0, ray);
+	while (rc.actxy[0] >= 0 && rc.actxy[1] >= 0
+		&& rc.actxy[0] < cube->map->size_y * 64
+		&& rc.actxy[1] < cube->map->size_x * 64)
+	{
+		if (cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == '1')
+			break ;
+		rc.actxy[0] += rc.incrementxy[0];
+		rc.actxy[1] += rc.incrementxy[1];
+	}
+	return (rc.actxy);
 }
 
 float	*wall_collision_hori(t_cube *cube, t_ray ray)
 {
-	float	*actualxy;
-	float	tang;
-	float	incrementxy[2];
+	t_raycast	rc;
 
-	actualxy = malloc(sizeof(float) * 2);
-	tang = -1.0f / tanf(ray.angle);
-	incrementxy[1] = 64;
-	actualxy[1] = ((int)(ray.y / 64)*64) + 64;
-	if (ray.angle > PI)
+	init_raycast(&rc, 1, ray);
+	while (rc.actxy[0] >= 0 && rc.actxy[1] >= 0
+		&& rc.actxy[0] < cube->map->size_y * 64
+		&& rc.actxy[1] < cube->map->size_x * 64)
 	{
-		incrementxy[1] = -64;
-		actualxy[1] = ((int)(ray.y / 64)*64) - 0.0002;
-	}
-	actualxy[0] = (ray.y - actualxy[1]) * tang + ray.x;
-	incrementxy[0] = -incrementxy[1] * tang;
-	while (actualxy[0] >= 0 && actualxy[1] >= 0
-		&& actualxy[0] < cube->map->size_y * 64
-		&& actualxy[1] < cube->map->size_x * 64)
-	{
-		if (cube->map->map[(int)actualxy[1] / 64][(int)actualxy[0] / 64] == '1')
+		if (cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == '1')
 			break ;
-		actualxy[0] += incrementxy[0];
-		actualxy[1] += incrementxy[1];
+		rc.actxy[0] += rc.incrementxy[0];
+		rc.actxy[1] += rc.incrementxy[1];
 	}
-	return (actualxy);
+	return (rc.actxy);
 }

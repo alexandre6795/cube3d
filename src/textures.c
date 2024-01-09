@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:20:15 by akastler          #+#    #+#             */
-/*   Updated: 2024/01/05 10:46:01 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/09 08:37:45 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	verify_texture(t_cube *cube)
 
 int	graphique_load(t_cube *cube)
 {
-	
 	if (open_textures(cube) != 0 || open_rgb(cube) != 0
 		|| verify_texture(cube) != 0)
 		return (1);

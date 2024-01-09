@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_on_minimap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:36:03 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/04 17:14:53 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/09 08:40:12 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,6 @@ void	image_to_map(t_cube *cube)
 		j = 0;
 		while (cube->map->map[i][j] && j < cube->map->size_y)
 		{
-			// if (cube->map->map[i][j] == '1')
-			// 	mlx_image_to_window(cube->mlx, cube->texture->black, j * 64, i
-			// 		* 64);
-			// else if (cube->map->map[i][j] == '0')
-			// 	mlx_image_to_window(cube->mlx, cube->texture->white, j * 64, i
-			// 		* 64);
 			if (cube->map->map[i][j] == '0' || cube->map->map[i][j] == 'N'
 				|| cube->map->map[i][j] == 'S' || cube->map->map[i][j] == 'E'
 				|| cube->map->map[i][j] == 'W')

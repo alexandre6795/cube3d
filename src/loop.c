@@ -6,7 +6,7 @@
 /*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:12:52 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/05 14:45:09 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/09 08:46:54 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,12 @@ float	*get_smallest_ray(t_cube *cube, int ray_nbr)
 	float	*stop2;
 	float	wall_hit_dist_hv[2];
 
-	// process de raycasting (touche verticale et horizontale)
 	stop = wall_collision_vert(cube, cube->player->ray[ray_nbr]);
 	stop2 = wall_collision_hori(cube, cube->player->ray[ray_nbr]);
-	// calcul de la distance entre le joueur et le mur pour la touche verticale et horizontale
 	wall_hit_dist_hv[1] = sqrtf(powf(cube->player->x - stop[0], 2)
 			+ powf(cube->player->y - stop[1], 2));
 	wall_hit_dist_hv[0] = sqrtf(powf((cube->player->x) - stop2[0], 2)
 			+ powf((cube->player->y) - stop2[1], 2));
-	// si la distance entre le joueur et le mur est plus grande pour la touche verticale que pour la touche horizontale
 	cube->player->ray[ray_nbr].hitted = 0;
 	cube->player->ray[ray_nbr].dist = wall_hit_dist_hv[1];
 	if (wall_hit_dist_hv[1] > wall_hit_dist_hv[0])
@@ -98,8 +95,8 @@ void	loop_ray(void *arg)
 	while (i < NB_RAY)
 	{
 		stop = get_smallest_ray(cube, i);
-		drawline((int[2]){cube->player->x / 4, cube->player->y / 4},
-			(int[2]){(int)stop[0] / 4, (int)stop[1] / 4}, cube);
+		drawline((int [2]){cube->player->x / 4, cube->player->y / 4},
+			(int [2]){(int)stop[0] / 4, (int)stop[1] / 4}, cube);
 		cube->player->ray[i].x = stop[0];
 		cube->player->ray[i].y = stop[1];
 		draw_3d(cube, i);

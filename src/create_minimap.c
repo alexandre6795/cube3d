@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:23:25 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/04 15:59:11 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/09 08:37:30 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	create_i(t_cube *cube, int imax, int jmax, int i)
 			{
 				mlx_put_pixel(cube->texture->black, i, j, rgba(0, 0, 0, 255));
 				mlx_put_pixel(cube->texture->white, i, j, rgba(222, 222, 222,
-					255));
+						255));
 			}
 			j++;
 		}

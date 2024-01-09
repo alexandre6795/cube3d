@@ -6,7 +6,7 @@
 /*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/05 14:20:15 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/09 09:10:14 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define NB_RAY 1920
 # define HEIGHT 1080
 # define DISTANCE_MAX_RAY 100
+# define CAM_SENSIVITY 2
+# define PLAYER_SPEED 5
 
 typedef struct s_startpos
 {
@@ -86,7 +88,15 @@ typedef struct s_ray
 	float			angle;
 	float			dist;
 	int				hitted;
+	char			block_type;
 }					t_ray;
+
+typedef struct s_raycast
+{
+	float			*actxy;
+	float			incrementxy[2];
+	float			tang;
+}					t_raycast;
 
 typedef struct s_player
 {
