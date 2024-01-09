@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/05 11:11:20 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:51:13 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	init_cube(t_cube *cube)
 
 void	loop(t_cube *cube)
 {
-	mlx_loop_hook(cube->mlx, &loop_hook, cube);
 	mlx_loop_hook(cube->mlx, &loop_ray, cube);
+	mlx_loop_hook(cube->mlx, &loop_hook, cube);
 }
 
 int	main(int ac, char **av)

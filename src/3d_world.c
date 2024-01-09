@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3d_world.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:26:10 by akastler          #+#    #+#             */
-/*   Updated: 2024/01/09 10:33:05 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:28:08 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 int	get_color(t_cube *cube, int ray_nbr, t_wall *wall)
 {
-	// if (cube->player->ray[ray_nbr].block_type != '1')
-	// change the texture var
 	if (cube->player->ray[ray_nbr].hitted == 1
 		|| cube->player->ray[ray_nbr].hitted == 3)
 	{
-		wall->value
-			= (((int)(cube->player->ray[ray_nbr].x / (64 / wall->texture->height)) % wall->texture->height)
+		wall->value = (((int)(cube->player->ray[ray_nbr].invx / (64
+							/ wall->texture->height)) % wall->texture->height)
 				+ ((int)wall->current * wall->texture->height)) * 4;
 	}
 	else
 	{
-		wall->value
-			= (((int)(cube->player->ray[ray_nbr].y / (64 / wall->texture->height)) % wall->texture->height)
+		wall->value = (((int)(cube->player->ray[ray_nbr].invy / (64
+							/ wall->texture->height)) % wall->texture->height)
 				+ ((int)wall->current * wall->texture->height)) * 4;
 	}
 	wall->color = rgba(wall->texture->pixels[wall->value],
@@ -37,6 +35,28 @@ int	get_color(t_cube *cube, int ray_nbr, t_wall *wall)
 	return (wall->color);
 }
 
+void	set_good_texture(t_wall *wall, t_cube *cube, int ray_nbr)
+{
+	if (cube->player->ray[ray_nbr].block_type[0] == '1')
+	{
+		if (cube->player->ray[ray_nbr].hitted == 1)
+			wall->texture = cube->texture->nord;
+		else if (cube->player->ray[ray_nbr].hitted == 2)
+			wall->texture = cube->texture->est;
+		else if (cube->player->ray[ray_nbr].hitted == 3)
+			wall->texture = cube->texture->south;
+		else if (cube->player->ray[ray_nbr].hitted == 4)
+			wall->texture = cube->texture->west;
+	}
+	else
+	{
+		if (cube->player->ray[ray_nbr].block_type[0] == 'D')
+			wall->texture = cube->texture->door[1];
+		else if (cube->player->ray[ray_nbr].block_type[0] == 'O')
+			wall->texture = cube->texture->door[0];
+	}
+}
+
 void	set_all_wall(t_wall *wall, t_cube *cube, int ray_nbr)
 {
 	wall->fisheyes = cube->player->angle - cube->player->ray[ray_nbr].angle;
@@ -44,14 +64,11 @@ void	set_all_wall(t_wall *wall, t_cube *cube, int ray_nbr)
 		wall->fisheyes -= 2 * PI;
 	else if (wall->fisheyes < 0)
 		wall->fisheyes += 2 * PI;
-	if (cube->player->ray[ray_nbr].hitted == 1)
-		wall->texture = cube->texture->nord;
-	else if (cube->player->ray[ray_nbr].hitted == 2)
-		wall->texture = cube->texture->est;
+	set_good_texture(wall, cube, ray_nbr);
+	if (cube->player->ray[ray_nbr].hitted == 4)
+		cube->player->ray[ray_nbr].invy = 63 - ((int)cube->player->ray[ray_nbr].invy % 64);
 	else if (cube->player->ray[ray_nbr].hitted == 3)
-		wall->texture = cube->texture->south;
-	else if (cube->player->ray[ray_nbr].hitted == 4)
-		wall->texture = cube->texture->west;
+		cube->player->ray[ray_nbr].invx = 63 - ((int)cube->player->ray[ray_nbr].invx % 64);
 	wall->dist = cube->player->ray[ray_nbr].dist * cos(wall->fisheyes);
 	wall->height = (HEIGHT * 64) / wall->dist;
 	wall->color = 0;
@@ -77,11 +94,11 @@ void	draw_3d(t_cube *cube, int ray_nbr)
 	while (i < HEIGHT)
 	{
 		if (i < (HEIGHT - wall.height) / 2)
-			color = rgba(cube->texture->sky[0],
-					cube->texture->sky[1], cube->texture->sky[0], 255);
+			color = rgba(cube->texture->sky[0], cube->texture->sky[1],
+					cube->texture->sky[0], 255);
 		else if (i > (HEIGHT + wall.height) / 2)
-			color = rgba(cube->texture->floor[0],
-					cube->texture->floor[1], cube->texture->floor[2], 255);
+			color = rgba(cube->texture->floor[0], cube->texture->floor[1],
+					cube->texture->floor[2], 255);
 		else
 			color = get_color(cube, ray_nbr, &wall);
 		mlx_put_pixel(cube->texture->rendu, ray_nbr, i, color);

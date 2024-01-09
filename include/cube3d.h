@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/09 09:59:16 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:27:19 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,12 @@ typedef struct s_ray
 {
 	float			x;
 	float			y;
+	float			invx;
+	float			invy;
 	float			angle;
 	float			dist;
 	int				hitted;
-	char			block_type;
+	char			block_type[2];
 }					t_ray;
 
 typedef struct s_raycast
@@ -191,14 +193,15 @@ float				convert_pirad_deg(float pirad);
 // test.c//
 void				print_map(t_cube *cube);
 
-float				*wall_collision_vert(t_cube *cube, t_ray ray);
-float				*wall_collision_hori(t_cube *cube, t_ray ray);
+float				*wall_collision_vert(t_cube *cube, t_ray *ray);
+float				*wall_collision_hori(t_cube *cube, t_ray *ray);
 
 // move.c
 void				ft_moveup(t_cube *cube);
 void				ft_movedown(t_cube *cube);
 void				ft_moveleft(t_cube *cube);
 void				ft_moveright(t_cube *cube);
+void				hodor(t_cube *cube);
 
 // move_utils.c
 int					calc_dist_before_hit(t_cube *cube, int direction);

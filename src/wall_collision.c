@@ -3,22 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   wall_collision.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:12:04 by akastler          #+#    #+#             */
-/*   Updated: 2024/01/09 08:35:11 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/09 11:32:37 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
-void	get_block_type(t_ray *ray, float actualxy[2], t_cube *cube)
-{
-	if (actualxy[0] && actualxy[1]
-		&& cube->map->map[(int)actualxy[1] / 64][(int)actualxy[0] / 64])
-		ray->block_type = cube->map->map[(int)actualxy[1] / 64][(int)actualxy[0]
-			/ 64];
-}
 
 void	init_raycast(t_raycast *rayc, int setting, t_ray ray)
 {
@@ -48,34 +41,44 @@ void	init_raycast(t_raycast *rayc, int setting, t_ray ray)
 	}
 }
 
-float	*wall_collision_vert(t_cube *cube, t_ray ray)
+float	*wall_collision_vert(t_cube *cube, t_ray *ray)
 {
 	t_raycast	rc;
 
-	init_raycast(&rc, 0, ray);
+	init_raycast(&rc, 0, *ray);
 	while (rc.actxy[0] >= 0 && rc.actxy[1] >= 0
 		&& rc.actxy[0] < cube->map->size_y * 64
 		&& rc.actxy[1] < cube->map->size_x * 64)
 	{
-		if (cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == '1')
+		if (cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == '1'
+			|| cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == 'D'
+			|| cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == 'O')
+		{
+			ray->block_type[0] = cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64];
 			break ;
+		}
 		rc.actxy[0] += rc.incrementxy[0];
 		rc.actxy[1] += rc.incrementxy[1];
 	}
 	return (rc.actxy);
 }
 
-float	*wall_collision_hori(t_cube *cube, t_ray ray)
+float	*wall_collision_hori(t_cube *cube, t_ray *ray)
 {
 	t_raycast	rc;
 
-	init_raycast(&rc, 1, ray);
+	init_raycast(&rc, 1, *ray);
 	while (rc.actxy[0] >= 0 && rc.actxy[1] >= 0
 		&& rc.actxy[0] < cube->map->size_y * 64
 		&& rc.actxy[1] < cube->map->size_x * 64)
 	{
-		if (cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == '1')
+		if (cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == '1'
+			|| cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == 'D'
+			|| cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == 'O')
+		{
+			ray->block_type[1] = cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64];
 			break ;
+		}
 		rc.actxy[0] += rc.incrementxy[0];
 		rc.actxy[1] += rc.incrementxy[1];
 	}

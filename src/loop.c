@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:12:52 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/09 08:46:54 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:55:00 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,17 @@
 
 void	loop_hook(void *param)
 {
-	t_cube	*cube;
+	static int	i;
+	t_cube		*cube;
 
+	i = 0;
 	cube = param;
+	if (i != 1)
+	{
+		printf("nb = %iy %f, x %f\n", NB_RAY / 2, cube->player->ray[NB_RAY
+			/ 2].y, cube->player->ray[NB_RAY/2].x);
+		i = 1;
+	}
 	if (mlx_is_key_down(cube->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(cube->mlx);
 	if (mlx_is_key_down(cube->mlx, MLX_KEY_S))
@@ -31,9 +39,8 @@ void	loop_hook(void *param)
 		rot_left(cube);
 	if (mlx_is_key_down(cube->mlx, MLX_KEY_RIGHT))
 		rot_right(cube);
-	// printf("\rX = %f   Y = %f   Angle = %f", cube->player->x,
-		// cube->player->y,
-	// 	convert_pirad_deg(cube->player->angle));
+	if (mlx_is_key_down(cube->mlx, MLX_KEY_E))
+		hodor(cube);
 }
 
 void	determinate_hitted(t_cube *cube, int ray_nbr)
@@ -62,8 +69,8 @@ float	*get_smallest_ray(t_cube *cube, int ray_nbr)
 	float	*stop2;
 	float	wall_hit_dist_hv[2];
 
-	stop = wall_collision_vert(cube, cube->player->ray[ray_nbr]);
-	stop2 = wall_collision_hori(cube, cube->player->ray[ray_nbr]);
+	stop = wall_collision_vert(cube, &cube->player->ray[ray_nbr]);
+	stop2 = wall_collision_hori(cube, &cube->player->ray[ray_nbr]);
 	wall_hit_dist_hv[1] = sqrtf(powf(cube->player->x - stop[0], 2)
 			+ powf(cube->player->y - stop[1], 2));
 	wall_hit_dist_hv[0] = sqrtf(powf((cube->player->x) - stop2[0], 2)
@@ -74,6 +81,7 @@ float	*get_smallest_ray(t_cube *cube, int ray_nbr)
 	{
 		cube->player->ray[ray_nbr].hitted = 1;
 		cube->player->ray[ray_nbr].dist = wall_hit_dist_hv[0];
+		cube->player->ray[ray_nbr].block_type[0] = cube->player->ray[ray_nbr].block_type[1];
 		stop[0] = stop2[0];
 		stop[1] = stop2[1];
 	}
@@ -95,10 +103,12 @@ void	loop_ray(void *arg)
 	while (i < NB_RAY)
 	{
 		stop = get_smallest_ray(cube, i);
-		drawline((int [2]){cube->player->x / 4, cube->player->y / 4},
-			(int [2]){(int)stop[0] / 4, (int)stop[1] / 4}, cube);
+		drawline((int[2]){cube->player->x / 4, cube->player->y / 4},
+			(int[2]){(int)stop[0] / 4, (int)stop[1] / 4}, cube);
 		cube->player->ray[i].x = stop[0];
 		cube->player->ray[i].y = stop[1];
+		cube->player->ray[i].invx = stop[0];
+		cube->player->ray[i].invy = stop[1];
 		draw_3d(cube, i);
 		free(stop);
 		i++;
