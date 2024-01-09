@@ -6,7 +6,7 @@
 #    By: akastler <akastler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 10:04:23 by aherrman          #+#    #+#              #
-#    Updated: 2024/01/05 09:27:29 by akastler         ###   ########.fr        #
+#    Updated: 2024/01/09 14:39:44 by akastler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ ray.c\
 utils_ray.c\
 pi_utils.c\
 3d_world.c\
+cursor.c\
 wall_collision.c\
 test.c
 

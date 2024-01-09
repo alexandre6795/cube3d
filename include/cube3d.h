@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/09 12:27:19 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:36:45 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,13 @@ typedef struct s_map
 	char			**map;
 }					t_map;
 
+typedef struct s_cursor
+{
+	double			originx;
+	double			originy;
+	bool			stuck;
+}					t_cursor;
+
 typedef struct s_cube
 {
 	t_startpos		*start;
@@ -125,7 +132,7 @@ typedef struct s_cube
 	t_image			*texture;
 	t_map			*map;
 	mlx_t			*mlx;
-
+	t_cursor		*cursor;
 }					t_cube;
 
 typedef struct s_bressenham
@@ -208,5 +215,8 @@ int					calc_dist_before_hit(t_cube *cube, int direction);
 
 // 3d_world.c
 void				draw_3d(t_cube *cube, int ray_nbr);
+
+// cursor.c
+void				cursor_hook(double x, double y, void *param);
 
 #endif

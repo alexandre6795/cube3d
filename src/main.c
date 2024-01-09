@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/09 12:51:13 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:45:32 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ void	init_cube(t_cube *cube)
 	init_for_mlx(cube);
 	cube->map = malloc(sizeof(t_map));
 	cube->map->map = NULL;
+	cube->cursor = malloc(sizeof(t_cursor));
+	cube->cursor->originx = NB_RAY / 2;
+	cube->cursor->originy = HEIGHT / 2;
+	cube->cursor->stuck = false;
 	init_ray(cube);
 }
 
@@ -70,6 +74,8 @@ void	loop(t_cube *cube)
 {
 	mlx_loop_hook(cube->mlx, &loop_ray, cube);
 	mlx_loop_hook(cube->mlx, &loop_hook, cube);
+	mlx_key_hook(cube->mlx, &key_hook, cube);
+	// mlx_cursor_hook(cube->mlx, &cursor_hook, cube);
 }
 
 int	main(int ac, char **av)
