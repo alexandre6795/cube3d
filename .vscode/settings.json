@@ -58,6 +58,7 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "mlx42.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "cube3d.h": "c"
   }
 }

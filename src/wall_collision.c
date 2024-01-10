@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:12:04 by akastler          #+#    #+#             */
-/*   Updated: 2024/01/09 11:32:37 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:30:31 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ float	*wall_collision_hori(t_cube *cube, t_ray *ray)
 	{
 		if (cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == '1'
 			|| cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == 'D'
-			|| cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == 'O')
+			 || cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64] == 'O')
 		{
 			ray->block_type[1] = cube->map->map[(int)rc.actxy[1] / 64][(int)rc.actxy[0] / 64];
 			break ;

@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 14:06:14 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/09 12:55:45 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:44:07 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_moveright(t_cube *cube)
 void	hodor(t_cube *cube)
 {
 	if (cube->player->ray[NB_RAY / 2].block_type[0] == 'D'
-		&& cube->player->ray[NB_RAY / 2].dist <= 500)
+		&& cube->player->ray[NB_RAY / 2].dist <= 50)
 	{
 		cube->map->map[(int)cube->player->ray[NB_RAY / 2].y
 			/ 64][(int)cube->player->ray[NB_RAY / 2].x / 64] = 'O';

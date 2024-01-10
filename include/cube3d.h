@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/09 14:36:45 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:46:05 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ void				image_to_map(t_cube *cube);
 // loop.c
 void				loop_hook(void *param);
 void				loop_ray(void *arg);
+void				key_hook(mlx_key_data_t keydata,void *arg);
 // move2.c
 void				rot_left(t_cube *cube);
 void				rot_right(t_cube *cube);

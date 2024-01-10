@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:12:52 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/09 14:45:27 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:11:46 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,9 @@
 
 void	loop_hook(void *param)
 {
-	static int	i;
-	t_cube		*cube;
+	t_cube	*cube;
 
-	i = 0;
 	cube = param;
-	if (i != 1)
-	{
-		printf("nb = %iy %f, x %f\n", NB_RAY / 2, cube->player->ray[NB_RAY
-			/ 2].y, cube->player->ray[NB_RAY/2].x);
-		i = 1;
-	}
 	if (mlx_is_key_down(cube->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(cube->mlx);
 	if (mlx_is_key_down(cube->mlx, MLX_KEY_S))
@@ -39,8 +31,6 @@ void	loop_hook(void *param)
 		rot_left(cube);
 	if (mlx_is_key_down(cube->mlx, MLX_KEY_RIGHT))
 		rot_right(cube);
-	if (mlx_is_key_down(cube->mlx, MLX_KEY_E))
-		hodor(cube);
 }
 
 void	determinate_hitted(t_cube *cube, int ray_nbr)
@@ -113,4 +103,13 @@ void	loop_ray(void *arg)
 		free(stop);
 		i++;
 	}
+}
+
+void	key_hook(mlx_key_data_t keydata, void *arg)
+{
+	t_cube	*cube;
+
+	cube = arg;
+	if (keydata.key == MLX_KEY_E && keydata.action == MLX_PRESS)
+		hodor(cube);
 }
