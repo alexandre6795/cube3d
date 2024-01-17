@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:20:15 by akastler          #+#    #+#             */
-/*   Updated: 2024/01/09 08:37:45 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:55:48 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	open_textures(t_cube *cube)
 			cube->texture->west = mlx_load_png(cube->texture->path[i]
 					+ skip_wp(cube->texture->path[i] + 2) + 2);
 	}
-	cube->texture->door[0] = mlx_load_png("img/door_open.png");
-	cube->texture->door[1] = mlx_load_png("img/door_close.png");
+	cube->texture->door[0] = mlx_load_png("img/test/door_open.png");
+	cube->texture->door[1] = mlx_load_png("img/test/door_close.png");
 	if (!cube->texture->nord || !cube->texture->south || !cube->texture->est
 		|| !cube->texture->west || !cube->texture->door[0]
 		|| !cube->texture->door[1])

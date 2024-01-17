@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 09:17:21 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/10 12:07:49 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:24:45 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ void	free_all_mlx(t_cube *cube)
 		mlx_delete_image(cube->mlx, cube->texture->white);
 	if (cube->texture->red)
 		mlx_delete_image(cube->mlx, cube->texture->red);
-	if (cube->texture->circle)
-		mlx_delete_image(cube->mlx, cube->texture->circle);
+	 if (cube->texture->circle)
+		 mlx_delete_image(cube->mlx, cube->texture->circle);
 }
 
 void	free_all_char(t_cube *cube)
 {
+	if (cube->texture->doori)
+		mlx_delete_image(cube->mlx, cube->texture->doori);
 	if (cube->map->map != NULL)
 		ft_free_tab(cube->map->map, 0);
 	if (cube->texture->path != NULL)
@@ -50,15 +52,14 @@ void	free_all_char(t_cube *cube)
 
 void	free_all_player(t_cube *cube)
 {
-	// int	i;
-
-	// i = 0;
-	// while (i < NB_RAY - 1)
-	// {
-	// 	if (cube->player->ray[i].block_type != NULL)
-	// 		free(cube->player->ray[i].block_type);
-	// 	i++;
-	// }
+	int	i;
+	i = 0;
+	while (i < NB_RAY - 1)
+	{
+		if (cube->player->ray[i].block_type != NULL)
+			free(cube->player->ray[i].block_type);
+		i++;
+	}
 	if (cube->player->ray)
 		free(cube->player->ray);
 }

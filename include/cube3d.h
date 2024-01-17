@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/10 10:46:05 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:19:28 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_image
 	mlx_image_t		*green;
 	mlx_image_t		*circle;
 	mlx_image_t		*rendu;
+	mlx_image_t		*doori;
 }					t_image;
 
 typedef struct s_wall
@@ -177,11 +178,11 @@ void				create_minimap(t_cube *cube);
 // create_minimapuser.c//
 int					create_person(t_cube *cube);
 // image_on_minimap.c//
-void				image_to_map(t_cube *cube);
+void				image_to_map(t_cube *cube, int i, int j);
 // loop.c
 void				loop_hook(void *param);
 void				loop_ray(void *arg);
-void				key_hook(mlx_key_data_t keydata,void *arg);
+void				key_hook(mlx_key_data_t keydata, void *arg);
 // move2.c
 void				rot_left(t_cube *cube);
 void				rot_right(t_cube *cube);

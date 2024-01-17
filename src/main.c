@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/10 11:02:49 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:19:35 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	init_for_mlx(t_cube *cube)
 	cube->texture->rendu = NULL;
 	cube->texture->door[0] = NULL;
 	cube->texture->door[1] = NULL;
+	cube->texture->doori = NULL;
 	cube->mlx = NULL;
 }
 

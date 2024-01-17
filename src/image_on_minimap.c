@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_on_minimap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:36:03 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/09 08:40:12 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:20:03 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,8 @@ void	complete_line(int i, int j, t_cube *cube)
 	}
 }
 
-void	image_to_map(t_cube *cube)
+void	image_to_map(t_cube *cube, int i, int j)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
 	while (cube->map->map[i])
 	{
 		j = 0;
@@ -37,6 +32,9 @@ void	image_to_map(t_cube *cube)
 				|| cube->map->map[i][j] == 'S' || cube->map->map[i][j] == 'E'
 				|| cube->map->map[i][j] == 'W')
 				mlx_image_to_window(cube->mlx, cube->texture->white, j * 16, i
+					* 16);
+			else if (cube->map->map[i][j] == 'D')
+				mlx_image_to_window(cube->mlx, cube->texture->doori, j * 16, i
 					* 16);
 			else
 				mlx_image_to_window(cube->mlx, cube->texture->black, j * 16, i
