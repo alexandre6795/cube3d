@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:19:19 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/17 12:04:58 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:06:00 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,21 @@ void	create_circle(t_cube *cube)
 	}
 }
 
+// void invert_image(mlx_texture_t *texture)
+// {
+// 	uint32_t i;
+// 	uint32_t j;
+// 	uint32_t tmp;
+
+// 	i = 0;
+// 	j = 0;
+// 	while (i < texture->width * texture->height)
+// 	{
+// 		texture
+// 		i++;
+// 	}
+// }
+
 void	create_world(t_cube *cube)
 {
 	int	i;
@@ -52,4 +67,6 @@ void	create_world(t_cube *cube)
 	image_to_map(cube,i,j);
 	create_circle(cube);
 	create_person(cube);
+	// invert_image(cube->texture->south);
+	// invert_image(cube->texture->west);
 }

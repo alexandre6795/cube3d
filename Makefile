@@ -6,7 +6,7 @@
 #    By: akastler <akastler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 10:04:23 by aherrman          #+#    #+#              #
-#    Updated: 2024/01/09 14:39:44 by akastler         ###   ########.fr        #
+#    Updated: 2024/01/22 11:52:30 by akastler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ OBJS = $(addprefix src/,$(SRCS:.c=.o))
 
 CC = gcc
 
-CFLAGS = -g3 -Wall -Werror -Wextra
+CFLAGS = -g3 -Wall -Werror -Wextra -Ofast
 
 RM = rm -rf
 

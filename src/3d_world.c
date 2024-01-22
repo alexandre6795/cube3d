@@ -3,30 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   3d_world.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:26:10 by akastler          #+#    #+#             */
-/*   Updated: 2024/01/09 12:28:08 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:45:51 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
+
+float get_ratio(t_cube *cube, t_wall *wall)
+{
+	(void)cube;
+	if (wall->texture->height > 64)
+	{
+		return (((float)64 / (float)wall->texture->height));
+	}
+	else
+		return(64 / wall->texture->height);
+}
 
 int	get_color(t_cube *cube, int ray_nbr, t_wall *wall)
 {
 	if (cube->player->ray[ray_nbr].hitted == 1
 		|| cube->player->ray[ray_nbr].hitted == 3)
 	{
-		wall->value = (((int)(cube->player->ray[ray_nbr].invx / (64
-							/ wall->texture->height)) % wall->texture->height)
+		wall->value = (((int)(cube->player->ray[ray_nbr].invx / get_ratio(cube, wall)) % wall->texture->height)
 				+ ((int)wall->current * wall->texture->height)) * 4;
 	}
 	else
 	{
-		wall->value = (((int)(cube->player->ray[ray_nbr].invy / (64
-							/ wall->texture->height)) % wall->texture->height)
+		wall->value = (((int)(cube->player->ray[ray_nbr].invy / get_ratio(cube, wall)) % wall->texture->height)
 				+ ((int)wall->current * wall->texture->height)) * 4;
 	}
+	if ((uint32_t)wall->value> wall->texture->height * wall->texture->height * 4)
+		return (wall->color);
 	wall->color = rgba(wall->texture->pixels[wall->value],
 			wall->texture->pixels[wall->value + 1],
 			wall->texture->pixels[wall->value + 2],
@@ -66,9 +77,10 @@ void	set_all_wall(t_wall *wall, t_cube *cube, int ray_nbr)
 		wall->fisheyes += 2 * PI;
 	set_good_texture(wall, cube, ray_nbr);
 	if (cube->player->ray[ray_nbr].hitted == 4)
-		cube->player->ray[ray_nbr].invy = 63 - ((int)cube->player->ray[ray_nbr].invy % 64);
+		
+		cube->player->ray[ray_nbr].invy = ((float)wall->texture->height - (cube->player->ray[ray_nbr].invy)) + wall->texture->height;
 	else if (cube->player->ray[ray_nbr].hitted == 3)
-		cube->player->ray[ray_nbr].invx = 63 - ((int)cube->player->ray[ray_nbr].invx % 64);
+		cube->player->ray[ray_nbr].invx = ((float)wall->texture->height - (cube->player->ray[ray_nbr].invx)) + wall->texture->height;
 	wall->dist = cube->player->ray[ray_nbr].dist * cos(wall->fisheyes);
 	wall->height = (HEIGHT * 64) / wall->dist;
 	wall->color = 0;

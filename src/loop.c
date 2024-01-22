@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:12:52 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/10 12:11:46 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/22 09:18:31 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,6 @@ void	key_hook(mlx_key_data_t keydata, void *arg)
 	cube = arg;
 	if (keydata.key == MLX_KEY_E && keydata.action == MLX_PRESS)
 		hodor(cube);
+	else if (keydata.key == MLX_KEY_M && keydata.action == MLX_PRESS)
+		change_mouse(cube);
 }

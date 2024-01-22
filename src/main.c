@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/17 12:19:35 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:02:33 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	init_cube(t_cube *cube)
 	cube->cursor = malloc(sizeof(t_cursor));
 	cube->cursor->originx = NB_RAY / 2;
 	cube->cursor->originy = HEIGHT / 2;
-	cube->cursor->stuck = false;
+	cube->cursor->stuck = true;
 	init_ray(cube);
 }
 
@@ -97,6 +97,7 @@ int	main(int ac, char **av)
 			create_world(cube);
 			loop(cube);
 			mlx_loop(cube->mlx);
+			
 		}
 	}
 	ft_free_all(cube);
