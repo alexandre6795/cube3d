@@ -6,7 +6,7 @@
 /*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/22 11:02:33 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:26:25 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	main(int ac, char **av)
 			create_world(cube);
 			loop(cube);
 			mlx_loop(cube->mlx);
-			
 		}
 	}
 	ft_free_all(cube);

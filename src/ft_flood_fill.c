@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flood_fill.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:21:29 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/10 13:50:33 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:27:28 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	verif(char **map)
 		while (map[i][++j])
 		{
 			if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S'
-				|| map[i][j] == 'E' || map[i][j] == 'W'|| map[i][j] == 'D')
+				|| map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == 'D')
 			{
 				if (i == 0 || i == ft_tablen(map) - 1 || j == 0
 					|| j == (int)ft_strlen(map[i]) - 1

@@ -6,7 +6,7 @@
 /*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:19:19 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/22 14:06:00 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:26:03 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,6 @@ void	create_circle(t_cube *cube)
 	}
 }
 
-// void invert_image(mlx_texture_t *texture)
-// {
-// 	uint32_t i;
-// 	uint32_t j;
-// 	uint32_t tmp;
-
-// 	i = 0;
-// 	j = 0;
-// 	while (i < texture->width * texture->height)
-// 	{
-// 		texture
-// 		i++;
-// 	}
-// }
-
 void	create_world(t_cube *cube)
 {
 	int	i;
@@ -64,9 +49,7 @@ void	create_world(t_cube *cube)
 	cube->texture->rendu = mlx_new_image(cube->mlx, NB_RAY, HEIGHT);
 	mlx_image_to_window(cube->mlx, cube->texture->rendu, 0, 0);
 	create_minimap(cube);
-	image_to_map(cube,i,j);
+	image_to_map(cube, i, j);
 	create_circle(cube);
 	create_person(cube);
-	// invert_image(cube->texture->south);
-	// invert_image(cube->texture->west);
 }

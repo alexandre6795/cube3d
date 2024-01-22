@@ -6,7 +6,7 @@
 /*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 09:17:21 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/22 09:08:49 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:27:06 by akastler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	free_all_mlx(t_cube *cube)
 		mlx_delete_image(cube->mlx, cube->texture->white);
 	if (cube->texture->red)
 		mlx_delete_image(cube->mlx, cube->texture->red);
-	 if (cube->texture->circle)
-		 mlx_delete_image(cube->mlx, cube->texture->circle);
+	if (cube->texture->circle)
+		mlx_delete_image(cube->mlx, cube->texture->circle);
 }
 
 void	free_all_char(t_cube *cube)
@@ -53,6 +53,7 @@ void	free_all_char(t_cube *cube)
 void	free_all_player(t_cube *cube)
 {
 	int	i;
+
 	i = 0;
 	while (i < NB_RAY - 1)
 	{
