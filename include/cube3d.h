@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/22 09:21:09 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:16:49 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,5 +221,6 @@ void				draw_3d(t_cube *cube, int ray_nbr);
 // cursor.c
 void				cursor_hook(double x, double y, void *param);
 void				change_mouse(t_cube *cube);
+void				resize_handle(int width, int height, void *param);
 
 #endif

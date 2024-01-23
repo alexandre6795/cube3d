@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:12:52 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/22 09:18:31 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:14:25 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ float	*get_smallest_ray(t_cube *cube, int ray_nbr)
 	{
 		cube->player->ray[ray_nbr].hitted = 1;
 		cube->player->ray[ray_nbr].dist = wall_hit_dist_hv[0];
-		cube->player->ray[ray_nbr].block_type[0] = cube->player->ray[ray_nbr].block_type[1];
+		cube->player->ray[ray_nbr].block_type[0]
+			= cube->player->ray[ray_nbr].block_type[1];
 		stop[0] = stop2[0];
 		stop[1] = stop2[1];
 	}
@@ -93,8 +94,8 @@ void	loop_ray(void *arg)
 	while (i < NB_RAY)
 	{
 		stop = get_smallest_ray(cube, i);
-		drawline((int[2]){cube->player->x / 4, cube->player->y / 4},
-			(int[2]){(int)stop[0] / 4, (int)stop[1] / 4}, cube);
+		drawline((int [2]){cube->player->x / 4, cube->player->y / 4},
+			(int [2]){(int)stop[0] / 4, (int)stop[1] / 4}, cube);
 		cube->player->ray[i].x = stop[0];
 		cube->player->ray[i].y = stop[1];
 		cube->player->ray[i].invx = stop[0];

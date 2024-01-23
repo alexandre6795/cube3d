@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 09:17:21 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/22 16:27:06 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/23 09:14:05 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,6 @@ void	free_all_char(t_cube *cube)
 
 void	free_all_player(t_cube *cube)
 {
-	int	i;
-
-	i = 0;
-	while (i < NB_RAY - 1)
-	{
-		// if (cube->player->ray[i].block_type != NULL)
-		// 	free(cube->player->ray[i].block_type);
-		i++;
-	}
 	if (cube->player->ray)
 		free(cube->player->ray);
 }

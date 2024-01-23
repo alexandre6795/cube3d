@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:48:41 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/22 16:26:25 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:15:55 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	loop(t_cube *cube)
 	mlx_loop_hook(cube->mlx, &loop_hook, cube);
 	mlx_key_hook(cube->mlx, &key_hook, cube);
 	mlx_cursor_hook(cube->mlx, &cursor_hook, cube);
+	mlx_resize_hook(cube->mlx, &resize_handle, cube);
 }
 
 int	main(int ac, char **av)

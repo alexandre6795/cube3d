@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:37:11 by aherrman          #+#    #+#             */
-/*   Updated: 2023/12/21 10:57:20 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/23 10:18:10 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,31 @@ int	*create_rgb(int r, int g, int b)
 	return (rgb);
 }
 
+int	valid_virgule(char *str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] == ',')
+			j++;
+		i++;
+	}
+	if (j != 2)
+		return (1);
+	return (0);
+}
+
 int	rgb_create(char *str, t_cube *cube, char c)
 {
 	char	**splited;
 	int		tmp[3];
 
+	if (valid_virgule(str) != 0)
+		return (1);
 	splited = ft_split(str, ',');
 	if (ft_valid_rgb(splited) != 0)
 		return (ft_free_tab(splited, 1));

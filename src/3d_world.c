@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   3d_world.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akastler <akastler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:26:10 by akastler          #+#    #+#             */
-/*   Updated: 2024/01/22 16:23:53 by akastler         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:13:15 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
-float get_ratio(t_cube *cube, t_wall *wall)
+float	get_ratio(t_cube *cube, t_wall *wall)
 {
 	(void)cube;
 	if (wall->texture->height > 64)
@@ -28,18 +28,18 @@ int	get_color(t_cube *cube, int ray_nbr, t_wall *wall)
 	if (cube->player->ray[ray_nbr].hitted == 1
 		|| cube->player->ray[ray_nbr].hitted == 3)
 	{
-		wall->value = (((int)(cube->player->ray[ray_nbr].invx
-						/ get_ratio(cube, wall)) % wall->texture->height)
+		wall->value = (((int)(cube->player->ray[ray_nbr].invx / get_ratio(cube,
+							wall)) % wall->texture->height)
 				+ ((int)wall->current * wall->texture->height)) * 4;
 	}
 	else
 	{
-		wall->value = (((int)(cube->player->ray[ray_nbr].invy
-						/ get_ratio(cube, wall)) % wall->texture->height)
+		wall->value = (((int)(cube->player->ray[ray_nbr].invy / get_ratio(cube,
+							wall)) % wall->texture->height)
 				+ ((int)wall->current * wall->texture->height)) * 4;
 	}
-	if ((uint32_t)wall->value
-		> wall->texture->height * wall->texture->height * 4)
+	if ((uint32_t)wall->value > wall->texture->height * wall->texture->height
+		* 4)
 		return (wall->color);
 	wall->color = rgba(wall->texture->pixels[wall->value],
 			wall->texture->pixels[wall->value + 1],
@@ -111,7 +111,7 @@ void	draw_3d(t_cube *cube, int ray_nbr)
 	{
 		if (i < (HEIGHT - wall.height) / 2)
 			color = rgba(cube->texture->sky[0], cube->texture->sky[1],
-					cube->texture->sky[0], 255);
+					cube->texture->sky[2], 255);
 		else if (i > (HEIGHT + wall.height) / 2)
 			color = rgba(cube->texture->floor[0], cube->texture->floor[1],
 					cube->texture->floor[2], 255);
