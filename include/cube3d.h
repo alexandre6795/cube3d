@@ -6,7 +6,7 @@
 /*   By: aherrman <aherrman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:52:59 by aherrman          #+#    #+#             */
-/*   Updated: 2024/01/23 11:16:49 by aherrman         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:42:21 by aherrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ typedef struct s_player
 	float			angle;
 	int				fov;
 	t_ray			*ray;
-	float			projection_plane;
 }					t_player;
 
 typedef struct s_map
